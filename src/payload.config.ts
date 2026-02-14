@@ -1,34 +1,67 @@
+import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import path from 'path'
-import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
-import sharp from 'sharp'
+import path from 'path'
 
-import { Users } from './collections/Users'
+import { Pages } from './collections/Pages'
+import { Rooms } from './collections/Rooms'
+import { Experiences } from './collections/Experiences'
 import { Media } from './collections/Media'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  // ── Admin panel — US-2A1 ──────────────────────────────────────────────────
   admin: {
-    user: Users.slug,
-    importMap: {
-      baseDir: path.resolve(dirname),
+    user: 'users',
+    meta: {
+      titleSuffix: '— Maison Elara CMS',
+      favicon: '/favicon.ico',
     },
   },
-  collections: [Users, Media],
-  editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+
+  // ── Collections ───────────────────────────────────────────────────────────
+  collections: [
+    Pages,
+    Rooms,
+    Experiences,
+    Media,
+    // Built-in users collection for admin login
+    {
+      slug: 'users',
+      auth: true,
+      admin: { useAsTitle: 'email' },
+      fields: [
+        { name: 'name', type: 'text' },
+        {
+          name: 'role',
+          type: 'select',
+          defaultValue: 'editor',
+          options: [
+            { label: 'Admin', value: 'admin' },
+            { label: 'Editor', value: 'editor' },
+          ],
+          admin: { position: 'sidebar' },
+        },
+      ],
+    },
+  ],
+
+  // ── Rich text editor ──────────────────────────────────────────────────────
+  editor: lexicalEditor({}),
+
+  // ── Database — PostgreSQL ─────────────────────────────────────────────────
+  db: postgresAdapter({
+    pool: { connectionString: process.env.DATABASE_URI as string },
+  }),
+
+  // ── Secret ────────────────────────────────────────────────────────────────
+  secret: process.env.PAYLOAD_SECRET as string,
+
+  // ── TypeScript output ─────────────────────────────────────────────────────
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URL || '',
-    },
-  }),
-  sharp,
-  plugins: [],
 })

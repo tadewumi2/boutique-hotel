@@ -5,6 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "seed": "cross-env NODE_OPTIONS=--no-deprecation tsx src/seed.ts",
     "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
@@ -30,6 +31,7 @@
     "payload": "3.76.1",
     "react": "19.2.1",
     "react-dom": "19.2.1",
+    "resend": "^6.9.2",
     "sharp": "^0.34.2"
   },
   "devDependencies": {
