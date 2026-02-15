@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight, Users, BedDouble, Maximize2, Eye, Check } from 'lucide-react'
-import { getRoomBySlug, getAllRoomSlugs, rooms } from '@/lib/rooms'
+import { getRoomBySlug, getAllRoomSlugs, getRooms } from '@/lib/rooms'
 import RoomGallery from '@/components/rooms/RoomGallery'
 import RoomCta from '@/components/rooms/RoomCta'
 import type { Metadata } from 'next'
@@ -10,30 +10,35 @@ type Props = { params: Promise<{ slug: string }> }
 
 // Generate static paths — US-B9
 export async function generateStaticParams() {
-  return getAllRoomSlugs().map((slug) => ({ slug }))
+  const slugs = await getAllRoomSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
 // Dynamic metadata — SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const room = getRoomBySlug(slug)
+  const room = await getRoomBySlug(slug)
   if (!room) return {}
   return {
     title: room.name,
     description: room.shortDescription,
-    openGraph: { images: [room.images[0]] },
+    openGraph: {
+      images: room.featuredImage ? [room.featuredImage.url] : [],
+    },
   }
 }
 
 export default async function RoomDetailPage({ params }: Props) {
   const { slug } = await params
-  const room = getRoomBySlug(slug)
+
+  // Fetch room + all rooms in parallel for prev/next
+  const [room, allRooms] = await Promise.all([getRoomBySlug(slug), getRooms()])
   if (!room) notFound()
 
   // Prev / Next navigation — US-B8
-  const idx = rooms.findIndex((r) => r.slug === slug)
-  const prev = rooms[idx - 1] ?? null
-  const next = rooms[idx + 1] ?? null
+  const idx = allRooms.findIndex((r) => r.slug === slug)
+  const prev = allRooms[idx - 1] ?? null
+  const next = allRooms[idx + 1] ?? null
 
   return (
     <main className="pt-24 pb-32 lg:pb-16">
@@ -55,12 +60,12 @@ export default async function RoomDetailPage({ params }: Props) {
           {/* Left column — main content */}
           <div className="lg:col-span-2">
             {/* Gallery — US-B5 */}
-            <RoomGallery images={room.images} name={room.name} />
+            <RoomGallery images={room.gallery} name={room.name} />
 
             {/* Room header */}
             <div className="mt-8 mb-6">
               <h1 className="font-serif text-4xl text-stone-900 mb-3">{room.name}</h1>
-              <p className="text-stone-500 leading-relaxed">{room.fullDescription}</p>
+              <p className="text-stone-500 leading-relaxed">{room.shortDescription}</p>
             </div>
 
             {/* Key info — US-B6 */}

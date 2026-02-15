@@ -3,16 +3,20 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { fileURLToPath } from 'url'
 import path from 'path'
+import sharp from 'sharp'
 
 import { Pages } from './collections/Pages'
 import { Rooms } from './collections/Rooms'
 import { Experiences } from './collections/Experiences'
 import { Media } from './collections/Media'
+import { Amenities } from './collections/Amenities'
+import { Gallery } from './collections/Gallery'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  sharp,
   // ── Admin panel — US-2A1 ──────────────────────────────────────────────────
   admin: {
     user: 'users',
@@ -28,6 +32,8 @@ export default buildConfig({
     Rooms,
     Experiences,
     Media,
+    Gallery,
+    Amenities,
     // Built-in users collection for admin login
     {
       slug: 'users',

@@ -2,9 +2,12 @@ import type { CollectionConfig } from 'payload'
 
 export const Rooms: CollectionConfig = {
   slug: 'rooms',
+  access: {
+    read: () => true, // published rooms are public — same pattern as Media
+  },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'bedType', 'priceFrom', '_status'],
+    defaultColumns: ['name', 'order', 'bedType', 'priceFrom', '_status'],
     description: 'Manage room types, images, and details.',
   },
   versions: {
@@ -70,7 +73,7 @@ export const Rooms: CollectionConfig = {
       name: 'featuredImage',
       type: 'upload',
       relationTo: 'media',
-      required: true,
+      required: false, // optional until media is seeded
     },
     {
       name: 'gallery',
@@ -108,6 +111,17 @@ export const Rooms: CollectionConfig = {
       type: 'checkbox',
       defaultValue: false,
       admin: { position: 'sidebar', description: 'Show "Popular" badge on card' },
+    },
+
+    // ── US-2B4 — display order ────────────────────────────────────────────────
+    {
+      name: 'order',
+      type: 'number',
+      defaultValue: 99,
+      admin: {
+        position: 'sidebar',
+        description: 'Display order on Rooms page. Lower number = shown first.',
+      },
     },
   ],
 }

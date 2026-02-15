@@ -71,6 +71,8 @@ export interface Config {
     rooms: Room;
     experiences: Experience;
     media: Media;
+    gallery: Gallery;
+    amenities: Amenity;
     users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -83,6 +85,8 @@ export interface Config {
     rooms: RoomsSelect<false> | RoomsSelect<true>;
     experiences: ExperiencesSelect<false> | ExperiencesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    gallery: GallerySelect<false> | GallerySelect<true>;
+    amenities: AmenitiesSelect<false> | AmenitiesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -293,7 +297,7 @@ export interface Room {
      */
     priceFrom: number;
   };
-  featuredImage: number | Media;
+  featuredImage?: (number | null) | Media;
   gallery?:
     | {
         image: number | Media;
@@ -322,6 +326,10 @@ export interface Room {
    * Show "Popular" badge on card
    */
   popular?: boolean | null;
+  /**
+   * Display order on Rooms page. Lower number = shown first.
+   */
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -379,6 +387,93 @@ export interface Experience {
         id?: string | null;
       }[]
     | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * Manage public gallery images — visibility, order, and captions.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery".
+ */
+export interface Gallery {
+  id: number;
+  /**
+   * Internal label shown in CMS list. Not shown on site.
+   */
+  title: string;
+  image: number | Media;
+  /**
+   * Optional caption shown in the lightbox on the gallery page.
+   */
+  caption?: string | null;
+  category: 'Rooms' | 'Dining' | 'Wellness' | 'Exterior' | 'Experience';
+  /**
+   * Uncheck to hide this image from the public gallery.
+   */
+  isVisible?: boolean | null;
+  /**
+   * Display order. Lower number = shown first.
+   */
+  order?: number | null;
+  /**
+   * Optionally link this image to a specific room.
+   */
+  room?: (number | null) | Room;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Manage hotel amenities — grouped by category, ordered, and publishable.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "amenities".
+ */
+export interface Amenity {
+  id: number;
+  name: string;
+  /**
+   * Used to group amenities into sections on the Amenities page.
+   */
+  category: 'in-room' | 'property' | 'services' | 'connectivity';
+  /**
+   * Whether this amenity is included, paid, or on request.
+   */
+  pricingStatus: 'included' | 'paid' | 'on-request';
+  /**
+   * Short description shown on the amenities page.
+   */
+  description?: string | null;
+  /**
+   * Lucide icon name e.g. Wifi, Coffee, Sun, Dumbbell.
+   */
+  icon?: string | null;
+  /**
+   * e.g. Daily 6am–10pm
+   */
+  availability?: string | null;
+  season?: ('year-round' | 'summer' | 'winter' | 'seasonal') | null;
+  /**
+   * Short extra note e.g. "By appointment only"
+   */
+  note?: string | null;
+  /**
+   * Enable a detail modal with image and extended description.
+   */
+  hasDetail?: boolean | null;
+  /**
+   * Image shown in the detail modal.
+   */
+  detailImage?: (number | null) | Media;
+  /**
+   * Extended description shown in the detail modal.
+   */
+  detailDescription?: string | null;
+  /**
+   * Display order within its category. Lower = shown first.
+   */
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -449,6 +544,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'gallery';
+        value: number | Gallery;
+      } | null)
+    | ({
+        relationTo: 'amenities';
+        value: number | Amenity;
       } | null)
     | ({
         relationTo: 'users';
@@ -581,6 +684,7 @@ export interface RoomsSelect<T extends boolean = true> {
         id?: T;
       };
   popular?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -673,6 +777,42 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery_select".
+ */
+export interface GallerySelect<T extends boolean = true> {
+  title?: T;
+  image?: T;
+  caption?: T;
+  category?: T;
+  isVisible?: T;
+  order?: T;
+  room?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "amenities_select".
+ */
+export interface AmenitiesSelect<T extends boolean = true> {
+  name?: T;
+  category?: T;
+  pricingStatus?: T;
+  description?: T;
+  icon?: T;
+  availability?: T;
+  season?: T;
+  note?: T;
+  hasDetail?: T;
+  detailImage?: T;
+  detailDescription?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

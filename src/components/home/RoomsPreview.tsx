@@ -1,38 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import { getRooms } from '@/lib/rooms'
 
-const rooms = [
-  {
-    name: 'Classic Room',
-    description:
-      'Intimate and carefully composed. Natural light, warm linens, and a view of the courtyard.',
-    size: '22 m²',
-    guests: '2 guests',
-    image: '/images/room-classic.jpg',
-    href: '/rooms/classic',
-  },
-  {
-    name: 'Deluxe Suite',
-    description:
-      'Generous space with a separate sitting area and curated art from local Parisian artists.',
-    size: '38 m²',
-    guests: '2 guests',
-    image: '/images/room-deluxe.jpg',
-    href: '/rooms/deluxe',
-  },
-  {
-    name: 'Penthouse',
-    description:
-      'Our most elevated experience. Rooftop terrace, panoramic city views, private dining.',
-    size: '72 m²',
-    guests: '4 guests',
-    image: '/images/room-penthouse.jpg',
-    href: '/rooms/penthouse',
-  },
-]
+export default async function RoomsPreview() {
+  const allRooms = await getRooms()
+  // Show first 3 rooms ordered by the `order` field (already sorted by getRooms)
+  const featured = allRooms.slice(0, 3)
 
-export default function RoomsPreview() {
   return (
     <section className="py-24 px-6 lg:px-10 max-w-7xl mx-auto">
       {/* Section header */}
@@ -67,29 +42,32 @@ export default function RoomsPreview() {
 
       {/* Room cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {rooms.map((room) => (
-          <Link key={room.name} href={room.href} className="group block">
+        {featured.map((room) => (
+          <Link key={room.slug} href={`/rooms/${room.slug}`} className="group block">
             <div className="relative aspect-[3/4] overflow-hidden rounded-xl mb-4">
-              <Image
-                src={room.image}
-                alt={room.name}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              {/* Overlay on hover */}
+              {room.featuredImage ? (
+                <Image
+                  src={room.featuredImage.url}
+                  alt={room.featuredImage.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="w-full h-full bg-stone-100" />
+              )}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
             </div>
 
             <div className="px-1">
               <div className="flex items-center justify-between mb-1.5">
                 <h3 className="font-serif text-xl text-stone-900">{room.name}</h3>
-                <span className="text-xs text-stone-400 font-medium">{room.size}</span>
+                <span className="text-xs text-stone-400 font-medium">{room.size} m²</span>
               </div>
-              <p className="text-sm text-stone-500 leading-relaxed mb-3">{room.description}</p>
+              <p className="text-sm text-stone-500 leading-relaxed mb-3">{room.shortDescription}</p>
               <span className="text-xs font-semibold text-amber-600 uppercase tracking-wider">
-                {room.guests}
+                {room.occupancy} guests
               </span>
             </div>
           </Link>

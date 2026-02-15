@@ -11,7 +11,7 @@ export default async function RoomsPage() {
   const { docs: rooms } = await payload.find({
     collection: 'rooms',
     where: { _status: { equals: 'published' } }, // US-2A5 — drafts not shown
-    sort: 'createdAt',
+    sort: 'order', // US-2B4 — respect editor-defined order
     depth: 1, // resolve media relations one level deep
   })
 
