@@ -123,5 +123,29 @@ export const Rooms: CollectionConfig = {
         description: 'Display order on Rooms page. Lower number = shown first.',
       },
     },
+
+    // ── SEO ──────────────────────────────────────────────────────────────────
+    {
+      name: 'seo',
+      type: 'group',
+      label: 'SEO',
+      admin: { position: 'sidebar' },
+      fields: [
+        {
+          name: 'metaTitle',
+          type: 'text',
+          admin: {
+            description: 'Overrides room name in browser tab. Keep under 60 characters.',
+          },
+        },
+        {
+          name: 'metaDescription',
+          type: 'textarea',
+          admin: {
+            description: 'Shown in search results. Keep under 160 characters.',
+          },
+        },
+      ],
+    },
   ],
 }

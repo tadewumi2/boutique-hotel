@@ -2,9 +2,12 @@ import type { CollectionConfig } from 'payload'
 
 export const Experiences: CollectionConfig = {
   slug: 'experiences',
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'category', 'season', '_status'],
+    defaultColumns: ['title', 'category', 'order', 'season', '_status'],
     description: 'Manage hotel experiences — dining, culture, wellness, etc.',
   },
   versions: {
@@ -22,6 +25,16 @@ export const Experiences: CollectionConfig = {
       required: true,
       unique: true,
       admin: { position: 'sidebar' },
+    },
+    // ── US-2E4 — display order ─────────────────────────────────────────────
+    {
+      name: 'order',
+      type: 'number',
+      defaultValue: 99,
+      admin: {
+        position: 'sidebar',
+        description: 'Display order on Experience page. Lower = shown first.',
+      },
     },
     {
       name: 'category',
@@ -88,6 +101,29 @@ export const Experiences: CollectionConfig = {
       name: 'features',
       type: 'array',
       fields: [{ name: 'feature', type: 'text', required: true }],
+    },
+    // ── SEO ──────────────────────────────────────────────────────────────────
+    {
+      name: 'seo',
+      type: 'group',
+      label: 'SEO',
+      admin: { position: 'sidebar' },
+      fields: [
+        {
+          name: 'metaTitle',
+          type: 'text',
+          admin: {
+            description: 'Overrides experience title in browser tab. Keep under 60 characters.',
+          },
+        },
+        {
+          name: 'metaDescription',
+          type: 'textarea',
+          admin: {
+            description: 'Shown in search results. Keep under 160 characters.',
+          },
+        },
+      ],
     },
   ],
 }

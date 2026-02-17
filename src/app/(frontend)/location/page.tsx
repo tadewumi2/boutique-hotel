@@ -12,7 +12,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Location & Neighbourhood',
   description:
-    "Maison Elara is located at the heart of Paris' 1st arrondissement — steps from the Louvre, Palais Royal, and the best of the city.",
+    "Golden Tee is located at the heart of Paris' 1st arrondissement — steps from the Louvre, Palais Royal, and the best of the city.",
 }
 
 export default function LocationPage() {

@@ -12,7 +12,7 @@ export default function NeighborhoodSection({ highlights }: { highlights: Highli
         <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
           <Image
             src="/images/story-paris.jpg"
-            alt="The neighbourhood around Maison Elara at golden hour"
+            alt="The neighbourhood around Golden Tee at golden hour"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"

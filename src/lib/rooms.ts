@@ -19,6 +19,10 @@ export type Room = {
   gallery: { url: string; alt: string }[]
   popular?: boolean
   order: number
+  seo?: {
+    metaTitle?: string
+    metaDescription?: string
+  }
 }
 
 // ── Payload response shapes ───────────────────────────────────────────────────
@@ -46,6 +50,10 @@ type PayloadRoomDoc = {
   gallery?: { image: PayloadMediaDoc }[]
   popular?: boolean
   order: number
+  seo?: {
+    metaTitle?: string
+    metaDescription?: string
+  }
 }
 
 type PayloadRoomsResponse = {
@@ -127,5 +135,6 @@ function normaliseRoom(doc: PayloadRoomDoc): Room {
       .map((g) => ({ url: g.image.url, alt: g.image.alt })),
     popular: doc.popular,
     order: doc.order,
+    seo: doc.seo,
   }
 }

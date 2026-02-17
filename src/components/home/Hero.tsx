@@ -8,7 +8,7 @@ export default function Hero() {
       {/* Background Image */}
       <Image
         src="/images/hero.jpg"
-        alt="Maison Elara hotel interior — a warm, sun-lit lobby with editorial design"
+        alt="Golden Tee hotel interior — a warm, sun-lit lobby with editorial design"
         fill
         priority
         sizes="100vw"

@@ -10,23 +10,29 @@ import type { Metadata } from 'next'
 type Props = { params: Promise<{ slug: string }> }
 
 export async function generateStaticParams() {
-  return getAllExperienceSlugs().map((slug) => ({ slug }))
+  const slugs = await getAllExperienceSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const exp = getExperienceBySlug(slug)
+  const exp = await getExperienceBySlug(slug)
   if (!exp) return {}
+
+  // Use SEO overrides if set, otherwise fall back to experience data
+  const title = exp.seo?.metaTitle || `${exp.title} — Maison Elara`
+  const description = exp.seo?.metaDescription || exp.description
+
   return {
-    title: exp.title,
+    title: `${exp.title} — Maison Elara`,
     description: exp.description,
-    openGraph: { images: [exp.image] },
+    openGraph: { images: [exp.image.url] },
   }
 }
 
 export default async function ExperienceDetailPage({ params }: Props) {
   const { slug } = await params
-  const exp = getExperienceBySlug(slug)
+  const exp = await getExperienceBySlug(slug)
   if (!exp) notFound()
 
   return (
@@ -45,11 +51,11 @@ export default async function ExperienceDetailPage({ params }: Props) {
           <span className="text-stone-600">{exp.title}</span>
         </nav>
 
-        {/* Hero image — US-C8 */}
+        {/* Hero image */}
         <div className="relative aspect-[21/9] rounded-2xl overflow-hidden mb-10">
           <Image
-            src={exp.image}
-            alt={exp.title}
+            src={exp.image.url}
+            alt={exp.image.alt}
             fill
             priority
             sizes="100vw"
@@ -71,7 +77,8 @@ export default async function ExperienceDetailPage({ params }: Props) {
               <SeasonalBadge season={exp.season} />
             </div>
             <p className="text-amber-600 font-medium italic text-lg mb-6">{exp.tagline}</p>
-            <p className="text-stone-500 leading-relaxed mb-8">{exp.fullDescription}</p>
+            {/* Description — fallback to short description until rich text renderer added */}
+            <p className="text-stone-500 leading-relaxed mb-8">{exp.description}</p>
 
             {/* Features */}
             <h2 className="font-serif text-xl text-stone-900 mb-4">What's Included</h2>
@@ -84,14 +91,14 @@ export default async function ExperienceDetailPage({ params }: Props) {
               ))}
             </div>
 
-            {/* Gallery — US-C4 */}
-            {exp.gallery && exp.gallery.length > 1 && (
+            {/* Gallery */}
+            {exp.gallery.length > 1 && (
               <div className="grid grid-cols-2 gap-3 mb-10">
                 {exp.gallery.slice(1).map((img, i) => (
                   <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden">
                     <Image
-                      src={img}
-                      alt={`${exp.title} — ${i + 2}`}
+                      src={img.url}
+                      alt={img.alt}
                       fill
                       sizes="(max-width: 1024px) 50vw, 30vw"
                       className="object-cover"
@@ -102,7 +109,6 @@ export default async function ExperienceDetailPage({ params }: Props) {
               </div>
             )}
 
-            {/* Back link */}
             <Link
               href="/experience"
               className="inline-flex items-center gap-2 text-sm text-stone-400 hover:text-stone-700 transition-colors group"
@@ -112,11 +118,10 @@ export default async function ExperienceDetailPage({ params }: Props) {
             </Link>
           </div>
 
-          {/* Sidebar — key details + CTA */}
+          {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-28 bg-white rounded-2xl border border-stone-200 shadow-sm p-6">
               <h3 className="font-serif text-xl text-stone-900 mb-5">Details</h3>
-
               <div className="flex flex-col gap-4 mb-6">
                 {exp.hours && (
                   <div className="flex items-start gap-3">
@@ -152,7 +157,6 @@ export default async function ExperienceDetailPage({ params }: Props) {
                   </div>
                 )}
               </div>
-
               <Link
                 href="/contact"
                 data-analytics="experience-detail-cta"
@@ -166,7 +170,6 @@ export default async function ExperienceDetailPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Bottom CTA — US-C7 */}
       <div className="mt-20 border-t border-stone-100">
         <ExperienceCta />
       </div>

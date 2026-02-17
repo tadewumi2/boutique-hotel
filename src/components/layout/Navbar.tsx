@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
+import { useAnalytics } from '@/lib/useAnalytics'
 
 const navLinks = [
   { label: 'Rooms', href: '/rooms' },
@@ -18,6 +19,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const { trackBookClick } = useAnalytics()
 
   const isHome = pathname === '/'
 
@@ -31,7 +33,6 @@ export default function Navbar() {
     setOpen(false)
   }, [pathname])
 
-  // On homepage: transparent until scrolled. On all other pages: always solid white.
   const solidBg = !isHome || scrolled
 
   return (
@@ -48,7 +49,7 @@ export default function Navbar() {
             solidBg ? 'text-stone-900' : 'text-white'
           }`}
         >
-          Maison Elara
+          Golden Tee
         </Link>
 
         {/* Desktop Links */}
@@ -79,6 +80,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <Link
           href="/contact"
+          onClick={() => trackBookClick('navbar_desktop')}
           className="hidden md:inline-flex items-center px-5 py-2 text-sm font-medium rounded-full border transition-all duration-200 border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white"
         >
           Book Now
@@ -116,6 +118,7 @@ export default function Navbar() {
           <li className="pt-4">
             <Link
               href="/contact"
+              onClick={() => trackBookClick('navbar_mobile')}
               className="block text-center py-3 rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-amber-600 transition-colors"
             >
               Book Now

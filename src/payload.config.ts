@@ -21,7 +21,7 @@ export default buildConfig({
   admin: {
     user: 'users',
     meta: {
-      titleSuffix: '— Maison Elara CMS',
+      titleSuffix: '— Golden Tee CMS',
       favicon: '/favicon.ico',
     },
   },

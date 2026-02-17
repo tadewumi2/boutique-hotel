@@ -12,7 +12,7 @@ export default function CtaBanner() {
         <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-stone-900 leading-tight mb-6">
           Your Stay at
           <br />
-          <em className="italic text-amber-600">Maison Elara</em> Awaits
+          <em className="italic text-amber-600">Golden Tee</em> Awaits
         </h2>
         <p className="text-stone-500 text-base max-w-xl mx-auto leading-relaxed mb-10">
           Reserve your room, enquire about a private experience, or simply say hello. We're here to

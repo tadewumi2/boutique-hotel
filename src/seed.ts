@@ -225,7 +225,7 @@ const roomData = [
               {
                 type: 'text',
                 version: 1,
-                text: 'The Penthouse is Maison Elara at its most expansive. Occupying the entire top floor, it features a private rooftop terrace with panoramic views across the Paris skyline, a fully equipped kitchen, and a dining area for private entertaining.',
+                text: 'The Penthouse is Golden Tee at its most expansive. Occupying the entire top floor, it features a private rooftop terrace with panoramic views across the Paris skyline, a fully equipped kitchen, and a dining area for private entertaining.',
               },
             ],
           },
@@ -382,7 +382,7 @@ const amenityData = [
     hasDetail: true,
     detailImageFile: 'story-lobby.jpg',
     detailDescription:
-      'The Maison Elara spa offers a selection of treatments designed around rest and restoration. Our therapists are trained in Swedish massage, deep tissue, and a signature Parisian facial using locally sourced ingredients.',
+      'The Golden Tee spa offers a selection of treatments designed around rest and restoration. Our therapists are trained in Swedish massage, deep tissue, and a signature Parisian facial using locally sourced ingredients.',
     order: 11,
   },
   // Guest Services
@@ -579,7 +579,7 @@ async function seedAmenities(payload: Awaited<ReturnType<typeof getPayload>>) {
 const galleryData = [
   {
     file: 'hero.jpg',
-    alt: 'Maison Elara hotel exterior at dusk',
+    alt: 'Golden Tee hotel exterior at dusk',
     caption: 'The hotel facade — a restored 19th-century Haussmann building.',
     category: 'Exterior',
     order: 1,
@@ -663,7 +663,164 @@ const galleryData = [
   },
 ]
 
-// ── Seed gallery ──────────────────────────────────────────────────────────────
+// ── Experience data ───────────────────────────────────────────────────────────
+const experienceData = [
+  {
+    slug: 'private-dining',
+    title: 'Private Dining',
+    category: 'Food & Wine',
+    tagline: 'An intimate table for two — or twenty.',
+    description:
+      'Curated menus crafted by our resident chef using seasonal produce from local Parisian markets. From quiet breakfasts to candlelit private dinners.',
+    imageFile: 'exp-wine.jpg',
+    imageAlt: 'Private dining setup with wine and candlelight',
+    galleryFiles: [
+      { file: 'exp-wine.jpg', alt: 'Private dining setup with wine and candlelight' },
+      { file: 'exp-wine-2.jpg', alt: 'Courtyard dining in the evening' },
+    ],
+    season: 'year-round',
+    details: {
+      hours: 'Breakfast 7–10am · Dinner 7–10pm',
+      pricingNote: 'From €65 per person',
+      reservationNote: 'Reservation required 24 hours in advance',
+    },
+    features: [
+      { feature: 'Seasonal Menu' },
+      { feature: 'Wine Pairing' },
+      { feature: 'Private Room Available' },
+      { feature: 'Dietary Options' },
+    ],
+    order: 1,
+  },
+  {
+    slug: 'gallery-walks',
+    title: 'Gallery Walks',
+    category: 'Culture',
+    tagline: 'Art as context, not decoration.',
+    description:
+      'Private guided tours through Le Marais galleries and Palais Royal gardens, tailored to your taste and pace. Art not as obligation — as discovery.',
+    imageFile: 'exp-gallery.jpg',
+    imageAlt: 'Private gallery walk in Le Marais',
+    galleryFiles: [{ file: 'exp-gallery.jpg', alt: 'Private gallery walk in Le Marais' }],
+    season: 'year-round',
+    details: {
+      hours: 'Mornings 9–11am · Evenings by arrangement',
+      pricingNote: 'Complimentary for suite guests · €45 per person for others',
+      reservationNote: 'Book at least 48 hours in advance',
+    },
+    features: [
+      { feature: 'Private Guide' },
+      { feature: 'After-Hours Access' },
+      { feature: 'Customised Route' },
+      { feature: 'Max 6 Guests' },
+    ],
+    order: 2,
+  },
+  {
+    slug: 'morning-wellness',
+    title: 'Morning Wellness',
+    category: 'Wellness',
+    tagline: 'Begin the day with intention.',
+    description:
+      'Sunrise yoga on the rooftop terrace followed by a light seasonal breakfast. A gentle ritual designed to settle you into Paris at your own pace.',
+    imageFile: 'exp-wellness.jpg',
+    imageAlt: 'Rooftop yoga session at sunrise',
+    galleryFiles: [
+      { file: 'exp-wellness.jpg', alt: 'Rooftop yoga session at sunrise' },
+      { file: 'exp-wellness-2.jpg', alt: 'Wellness spa treatment room' },
+    ],
+    season: 'spring',
+    details: {
+      hours: 'Daily 7–8am',
+      pricingNote: 'Included for all guests',
+      reservationNote: 'Sign up at reception the evening prior',
+    },
+    features: [
+      { feature: 'Rooftop Setting' },
+      { feature: 'Seasonal Breakfast' },
+      { feature: 'Max 8 Guests' },
+      { feature: 'All Levels Welcome' },
+    ],
+    order: 3,
+  },
+  {
+    slug: 'concierge-itineraries',
+    title: 'Concierge Itineraries',
+    category: 'Exploration',
+    tagline: 'Paris, curated just for you.',
+    description:
+      'Our concierge team crafts personal day plans — restaurant reservations, hidden bookshops, market routes, and more — tailored entirely to your interests.',
+    imageFile: 'story-paris.jpg',
+    imageAlt: 'Parisian street near the hotel at golden hour',
+    galleryFiles: [
+      { file: 'story-paris.jpg', alt: 'Parisian street near the hotel at golden hour' },
+    ],
+    season: 'year-round',
+    details: {
+      hours: 'Concierge available daily 8am–9pm',
+      pricingNote: 'Complimentary service',
+      reservationNote: 'Contact us before arrival for best results',
+    },
+    features: [
+      { feature: 'Personalised Planning' },
+      { feature: 'Restaurant Reservations' },
+      { feature: 'Hidden Gems' },
+      { feature: 'Pre-Arrival Service' },
+    ],
+    order: 4,
+  },
+]
+
+// ── Seed experiences ──────────────────────────────────────────────────────────
+async function seedExperiences(payload: Awaited<ReturnType<typeof getPayload>>) {
+  console.log('\n🌟 Seeding experiences (upsert mode)...\n')
+
+  for (const exp of experienceData) {
+    console.log(`📦 Processing — "${exp.title}"`)
+
+    const imageId = await upsertMedia(payload, exp.imageFile, exp.imageAlt)
+    if (!imageId) {
+      console.log(`  ⚠️  Skipping — featured image missing\n`)
+      continue
+    }
+
+    const galleryIds: { image: string }[] = []
+    for (const { file, alt } of exp.galleryFiles) {
+      const id = await upsertMedia(payload, file, alt)
+      if (id) galleryIds.push({ image: id })
+    }
+
+    const data = {
+      slug: exp.slug,
+      title: exp.title,
+      category: exp.category,
+      tagline: exp.tagline,
+      description: exp.description,
+      image: imageId,
+      gallery: galleryIds,
+      season: exp.season,
+      details: exp.details,
+      features: exp.features,
+      order: exp.order,
+      _status: 'published' as const,
+    }
+
+    const existing = await payload.find({
+      collection: 'experiences',
+      where: { slug: { equals: exp.slug } },
+      limit: 1,
+    })
+
+    if (existing.docs.length > 0) {
+      await payload.update({ collection: 'experiences', id: existing.docs[0].id as string, data })
+      console.log(`  ✏️  Updated — "${exp.title}"\n`)
+    } else {
+      await payload.create({ collection: 'experiences', data })
+      console.log(`  ✅ Created — "${exp.title}"\n`)
+    }
+  }
+}
+
 async function seedGallery(payload: Awaited<ReturnType<typeof getPayload>>) {
   console.log('\n🖼  Seeding gallery (upsert mode)...\n')
 
@@ -710,9 +867,10 @@ async function seed() {
 
   await seedRooms(payload)
   await seedAmenities(payload)
+  await seedExperiences(payload)
   await seedGallery(payload)
 
-  console.log('\n🌱 All done — rooms, amenities, and gallery seeded.')
+  console.log('\n🌱 All done — rooms, amenities, experiences, and gallery seeded.')
   process.exit(0)
 }
 

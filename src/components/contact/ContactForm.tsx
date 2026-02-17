@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
+import { useAnalytics } from '@/lib/useAnalytics'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
 type FieldErrors = Record<string, string>
@@ -25,12 +26,12 @@ export default function ContactForm() {
     message: '',
     interest: 'General Enquiry',
   })
+  const { trackContactSubmit } = useAnalytics()
 
   const set =
     (k: keyof typeof values) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       setValues((v) => ({ ...v, [k]: e.target.value }))
-      // Clear error on change
       if (fieldErrors[k])
         setFieldErrors((fe) => {
           const n = { ...fe }
@@ -39,7 +40,6 @@ export default function ContactForm() {
         })
     }
 
-  // Client-side validation — US-G2, G8
   const validate = (): boolean => {
     const errs: FieldErrors = {}
     if (!values.name.trim() || values.name.trim().length < 2)
@@ -67,16 +67,10 @@ export default function ContactForm() {
       const data = await res.json()
 
       if (data.success) {
+        trackContactSubmit()
         setState('success')
         setValues({ name: '', email: '', phone: '', message: '', interest: 'General Enquiry' })
         setFieldErrors({})
-
-        // US-G7 — analytics event
-        window.dispatchEvent(
-          new CustomEvent('contact:submitted', {
-            detail: { interest: values.interest },
-          }),
-        )
       } else {
         setFieldErrors(data.errors ?? {})
         setState('idle')
@@ -86,7 +80,6 @@ export default function ContactForm() {
     }
   }
 
-  // Success state — US-G5
   if (state === 'success') {
     return (
       <div className="flex flex-col items-center justify-center text-center py-12 px-6">
@@ -110,7 +103,6 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate aria-label="Contact form">
-      {/* Global error — US-G5 */}
       {state === 'error' && (
         <div
           className="flex items-start gap-3 p-4 rounded-xl bg-red-50 border border-red-200 mb-6"
@@ -128,7 +120,6 @@ export default function ContactForm() {
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {/* Name — US-G2, G8 */}
         <div>
           <label htmlFor="name" className={labelClass}>
             Full Name{' '}
@@ -160,7 +151,6 @@ export default function ContactForm() {
           )}
         </div>
 
-        {/* Email */}
         <div>
           <label htmlFor="email" className={labelClass}>
             Email Address{' '}
@@ -192,7 +182,6 @@ export default function ContactForm() {
           )}
         </div>
 
-        {/* Phone — optional */}
         <div>
           <label htmlFor="phone" className={labelClass}>
             Phone <span className="text-stone-300 font-normal normal-case">(optional)</span>
@@ -208,7 +197,6 @@ export default function ContactForm() {
           />
         </div>
 
-        {/* Enquiry type */}
         <div>
           <label htmlFor="interest" className={labelClass}>
             I'm enquiring about
@@ -234,7 +222,6 @@ export default function ContactForm() {
           </select>
         </div>
 
-        {/* Message — full width */}
         <div className="sm:col-span-2">
           <label htmlFor="message" className={labelClass}>
             Message{' '}
@@ -266,7 +253,6 @@ export default function ContactForm() {
         </div>
       </div>
 
-      {/* Honeypot — US-G6, hidden from real users */}
       <input
         type="text"
         name="_trap"
@@ -277,7 +263,6 @@ export default function ContactForm() {
         defaultValue=""
       />
 
-      {/* Submit */}
       <div className="mt-6">
         <button
           type="submit"

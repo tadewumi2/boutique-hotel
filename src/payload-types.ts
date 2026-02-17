@@ -330,6 +330,16 @@ export interface Room {
    * Display order on Rooms page. Lower number = shown first.
    */
   order?: number | null;
+  seo?: {
+    /**
+     * Overrides room name in browser tab. Keep under 60 characters.
+     */
+    metaTitle?: string | null;
+    /**
+     * Shown in search results. Keep under 160 characters.
+     */
+    metaDescription?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -344,6 +354,10 @@ export interface Experience {
   id: number;
   title: string;
   slug: string;
+  /**
+   * Display order on Experience page. Lower = shown first.
+   */
+  order?: number | null;
   category: 'Food & Wine' | 'Culture' | 'Wellness' | 'Exploration';
   /**
    * Short italic line shown under the title.
@@ -387,6 +401,16 @@ export interface Experience {
         id?: string | null;
       }[]
     | null;
+  seo?: {
+    /**
+     * Overrides experience title in browser tab. Keep under 60 characters.
+     */
+    metaTitle?: string | null;
+    /**
+     * Shown in search results. Keep under 160 characters.
+     */
+    metaDescription?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -685,6 +709,12 @@ export interface RoomsSelect<T extends boolean = true> {
       };
   popular?: T;
   order?: T;
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -696,6 +726,7 @@ export interface RoomsSelect<T extends boolean = true> {
 export interface ExperiencesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  order?: T;
   category?: T;
   tagline?: T;
   description?: T;
@@ -720,6 +751,12 @@ export interface ExperiencesSelect<T extends boolean = true> {
     | {
         feature?: T;
         id?: T;
+      };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
       };
   updatedAt?: T;
   createdAt?: T;

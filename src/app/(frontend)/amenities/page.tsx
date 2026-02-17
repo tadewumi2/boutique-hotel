@@ -3,9 +3,9 @@ import { getAmenities, groupAmenities } from '@/lib/amenities'
 import AmenitiesClient from '@/components/amenities/AmenitiesClient'
 
 export const metadata: Metadata = {
-  title: 'Amenities — Maison Elara',
+  title: 'Amenities — Golden Tee',
   description:
-    'Discover everything included in your stay at Maison Elara — from in-room comforts to property facilities and guest services.',
+    'Discover everything included in your stay at Golden Tee — from in-room comforts to property facilities and guest services.',
 }
 
 export default async function AmenitiesPage() {

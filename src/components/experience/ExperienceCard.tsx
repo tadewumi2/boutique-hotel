@@ -10,14 +10,13 @@ export default function ExperienceCard({ exp }: { exp: Experience }) {
       {/* Image */}
       <div className="relative aspect-[16/9] overflow-hidden">
         <Image
-          src={exp.image}
-          alt={exp.title}
+          src={exp.image.url}
+          alt={exp.image.alt}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
           loading="lazy"
         />
-        {/* Category pill */}
         <span className="absolute top-4 left-4 bg-black/50 text-white text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-sm">
           {exp.category}
         </span>
@@ -35,7 +34,6 @@ export default function ExperienceCard({ exp }: { exp: Experience }) {
           {exp.description}
         </p>
 
-        {/* Meta info */}
         <div className="flex flex-col gap-2 mb-5">
           {exp.hours && (
             <div className="flex items-center gap-2 text-xs text-stone-400">
@@ -51,7 +49,6 @@ export default function ExperienceCard({ exp }: { exp: Experience }) {
           )}
         </div>
 
-        {/* Feature tags */}
         <div className="flex flex-wrap gap-1.5 mb-5">
           {exp.features.slice(0, 3).map((f) => (
             <span key={f} className="text-xs bg-stone-100 text-stone-600 px-2.5 py-1 rounded-full">

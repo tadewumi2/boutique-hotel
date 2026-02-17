@@ -7,7 +7,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Contact & Book',
   description:
-    'Get in touch with Maison Elara — enquire about rooms, dining, experiences, or book your stay in Paris.',
+    'Get in touch with Golden Tee — enquire about rooms, dining, experiences, or book your stay in Paris.',
 }
 
 export default function ContactPage() {

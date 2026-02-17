@@ -3,13 +3,15 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, X, Mail } from 'lucide-react'
+import { useAnalytics } from '@/lib/useAnalytics'
 
 export default function RoomCta({ roomName, priceFrom }: { roomName: string; priceFrom: number }) {
   const [modal, setModal] = useState(false)
+  const { trackBookClick } = useAnalytics()
 
   return (
     <>
-      {/* Sticky CTA bar — visible on mobile */}
+      {/* Sticky CTA bar — mobile */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-stone-200 px-6 py-4 flex gap-3">
         <button
           onClick={() => setModal(true)}
@@ -19,6 +21,7 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
         </button>
         <Link
           href="/contact"
+          onClick={() => trackBookClick('room_cta_mobile')}
           className="flex-1 py-3 rounded-full bg-amber-500 hover:bg-amber-400 text-white text-sm font-medium text-center transition-colors"
         >
           Book Now
@@ -36,6 +39,7 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
 
         <Link
           href="/contact"
+          onClick={() => trackBookClick('room_cta_desktop')}
           className="flex items-center justify-between w-full px-5 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-white font-medium text-sm transition-colors mb-3 group"
         >
           Book Now
@@ -54,7 +58,7 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
         </p>
       </div>
 
-      {/* Enquiry modal — US-B7 */}
+      {/* Enquiry modal */}
       {modal && (
         <div
           className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"

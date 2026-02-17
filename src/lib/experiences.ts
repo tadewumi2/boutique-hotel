@@ -1,3 +1,7 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// lib/experiences.ts — Payload-driven experience data fetching
+// ─────────────────────────────────────────────────────────────────────────────
+
 export type Season = 'year-round' | 'summer' | 'winter' | 'spring' | 'autumn'
 
 export type NearbyPlace = {
@@ -8,102 +12,28 @@ export type NearbyPlace = {
 }
 
 export type Experience = {
+  id: string
   slug: string
   title: string
   category: string
   tagline: string
   description: string
-  fullDescription: string
-  image: string
-  gallery?: string[]
+  fullDescription: unknown // Lexical rich text
+  image: { url: string; alt: string }
+  gallery: { url: string; alt: string }[]
   season: Season
   hours?: string
   reservationNote?: string
   pricingNote?: string
   features: string[]
-  anchor: string // used for section anchors on the main page
+  order: number
+  seo?: {
+    metaTitle?: string
+    metaDescription?: string
+  }
 }
 
-export const experiences: Experience[] = [
-  {
-    slug: 'private-dining',
-    title: 'Private Dining',
-    category: 'Food & Wine',
-    tagline: 'An intimate table for two — or twenty.',
-    description:
-      'Curated menus crafted by our resident chef using seasonal produce from local Parisian markets. From quiet breakfasts to candlelit private dinners.',
-    fullDescription:
-      "Our private dining experience begins with a consultation with our resident chef, who sources ingredients daily from Marché d'Aligre and Marché des Enfants Rouges. Whether you are celebrating a milestone or simply savouring an evening, every menu is composed with your preferences in mind. The private dining room seats up to twelve and is available for exclusive hire.",
-    image: '/images/exp-wine.jpg',
-    gallery: ['/images/exp-wine.jpg', '/images/exp-wine-2.jpg'],
-    season: 'year-round',
-    hours: 'Breakfast 7–10am · Dinner 7–10pm',
-    reservationNote: 'Reservation required 24 hours in advance',
-    pricingNote: 'From €65 per person',
-    features: ['Seasonal Menu', 'Wine Pairing', 'Private Room Available', 'Dietary Options'],
-    anchor: 'dining',
-  },
-  {
-    slug: 'gallery-walks',
-    title: 'Gallery Walks',
-    category: 'Culture',
-    tagline: 'Art as context, not decoration.',
-    description:
-      'Private guided tours through Le Marais galleries and Palais Royal gardens, tailored to your taste and pace. Art not as obligation — as discovery.',
-    fullDescription:
-      'Led by our in-house cultural curator, these walks venture into the gallery districts surrounding the hotel. We partner with independent gallerists to offer after-hours access to exhibitions not available to the public. Each walk is composed to match your interests — contemporary, classical, or somewhere beautifully in between.',
-    image: '/images/exp-gallery.jpg',
-    gallery: ['/images/exp-gallery.jpg', '/images/exp-gallery-2.jpg'],
-    season: 'year-round',
-    hours: 'Mornings 9–11am · Evenings by arrangement',
-    reservationNote: 'Book at least 48 hours in advance',
-    pricingNote: 'Complimentary for suite guests · €45 per person for others',
-    features: ['Private Guide', 'After-Hours Access', 'Customised Route', 'Max 6 Guests'],
-    anchor: 'culture',
-  },
-  {
-    slug: 'morning-wellness',
-    title: 'Morning Wellness',
-    category: 'Wellness',
-    tagline: 'Begin the day with intention.',
-    description:
-      'Sunrise yoga on the rooftop terrace followed by a light seasonal breakfast. A gentle ritual designed to settle you into Paris at your own pace.',
-    fullDescription:
-      'Our morning wellness programme takes place on the rooftop terrace overlooking the Parisian skyline. Sessions are led by a resident yoga instructor and run for 60 minutes, followed by a curated wellness breakfast of seasonal fruit, cold-pressed juices, and house-baked pastries. Available daily from spring through autumn.',
-    image: '/images/exp-wellness.jpg',
-    gallery: ['/images/exp-wellness.jpg', '/images/exp-wellness-2.jpg'],
-    season: 'spring',
-    hours: 'Daily 7–8am',
-    reservationNote: 'Sign up at reception the evening prior',
-    pricingNote: 'Included for all guests',
-    features: ['Rooftop Setting', 'Seasonal Breakfast', 'Max 8 Guests', 'All Levels Welcome'],
-    anchor: 'wellness',
-  },
-  {
-    slug: 'concierge-itineraries',
-    title: 'Concierge Itineraries',
-    category: 'Exploration',
-    tagline: 'Paris, curated just for you.',
-    description:
-      'Our concierge team crafts personal day plans — restaurant reservations, hidden bookshops, market routes, and more — tailored entirely to your interests.',
-    fullDescription:
-      'The Maison Elara concierge service goes well beyond restaurant bookings. Before your arrival, our team reaches out to understand what kind of Paris you are hoping to find. We then craft a day-by-day itinerary of recommendations, reservations, and discoveries — from the well-known to the genuinely secret. Adjustments are made each morning over breakfast.',
-    image: '/images/story-paris.jpg',
-    gallery: ['/images/story-paris.jpg'],
-    season: 'year-round',
-    hours: 'Concierge available daily 8am–9pm',
-    reservationNote: 'Contact us before arrival for best results',
-    pricingNote: 'Complimentary service',
-    features: [
-      'Personalised Planning',
-      'Restaurant Reservations',
-      'Hidden Gems',
-      'Pre-Arrival Service',
-    ],
-    anchor: 'exploration',
-  },
-]
-
+// ── Nearby places — static, not CMS-driven ───────────────────────────────────
 export const nearbyPlaces: NearbyPlace[] = [
   { name: 'Palais Royal Gardens', category: 'Park', distance: '200m', walkTime: '3 min' },
   { name: 'Louvre Museum', category: 'Museum', distance: '400m', walkTime: '5 min' },
@@ -113,10 +43,104 @@ export const nearbyPlaces: NearbyPlace[] = [
   { name: 'Centre Pompidou', category: 'Museum', distance: '1.2km', walkTime: '15 min' },
 ]
 
-export function getExperienceBySlug(slug: string): Experience | undefined {
-  return experiences.find((e) => e.slug === slug)
+// ── Payload response shapes ───────────────────────────────────────────────────
+type PayloadMediaDoc = { url: string; alt: string }
+
+type PayloadExperienceDoc = {
+  id: string
+  slug: string
+  title: string
+  category: string
+  tagline?: string
+  description: string
+  fullDescription?: unknown
+  image: PayloadMediaDoc
+  gallery?: { image: PayloadMediaDoc }[]
+  season: Season
+  details?: {
+    hours?: string
+    pricingNote?: string
+    reservationNote?: string
+  }
+  features?: { feature: string }[]
+  order: number
+  seo?: {
+    metaTitle?: string
+    metaDescription?: string
+  }
 }
 
-export function getAllExperienceSlugs(): string[] {
-  return experiences.map((e) => e.slug)
+type PayloadExperiencesResponse = { docs: PayloadExperienceDoc[] }
+
+// ── Fetch all published experiences, sorted by order ─────────────────────────
+export async function getExperiences(): Promise<Experience[]> {
+  const base = process.env.NEXT_PUBLIC_SERVER_URL ?? 'http://localhost:3000'
+
+  const params = new URLSearchParams({
+    'where[_status][equals]': 'published',
+    sort: 'order',
+    limit: '50',
+    depth: '1',
+  })
+
+  const res = await fetch(`${base}/api/experiences?${params}`, {
+    next: { revalidate: 60 },
+  })
+
+  if (!res.ok) {
+    console.error('Failed to fetch experiences:', res.statusText)
+    return []
+  }
+
+  const data: PayloadExperiencesResponse = await res.json()
+  return data.docs.map(normalise)
+}
+
+// ── Fetch a single experience by slug ────────────────────────────────────────
+export async function getExperienceBySlug(slug: string): Promise<Experience | null> {
+  const base = process.env.NEXT_PUBLIC_SERVER_URL ?? 'http://localhost:3000'
+
+  const params = new URLSearchParams({
+    'where[slug][equals]': slug,
+    'where[_status][equals]': 'published',
+    limit: '1',
+    depth: '1',
+  })
+
+  const res = await fetch(`${base}/api/experiences?${params}`, {
+    next: { revalidate: 60 },
+  })
+
+  if (!res.ok) return null
+  const data: PayloadExperiencesResponse = await res.json()
+  const doc = data.docs[0]
+  return doc ? normalise(doc) : null
+}
+
+// ── Fetch all published slugs (for generateStaticParams) ─────────────────────
+export async function getAllExperienceSlugs(): Promise<string[]> {
+  const exps = await getExperiences()
+  return exps.map((e) => e.slug)
+}
+
+// ── Normalise Payload doc → Experience type ───────────────────────────────────
+function normalise(doc: PayloadExperienceDoc): Experience {
+  return {
+    id: doc.id,
+    slug: doc.slug,
+    title: doc.title,
+    category: doc.category,
+    tagline: doc.tagline ?? '',
+    description: doc.description,
+    fullDescription: doc.fullDescription,
+    image: { url: doc.image.url, alt: doc.image.alt },
+    gallery: (doc.gallery ?? []).map((g) => ({ url: g.image.url, alt: g.image.alt })),
+    season: doc.season,
+    hours: doc.details?.hours,
+    pricingNote: doc.details?.pricingNote,
+    reservationNote: doc.details?.reservationNote,
+    features: (doc.features ?? []).map((f) => f.feature),
+    order: doc.order,
+    seo: doc.seo,
+  }
 }

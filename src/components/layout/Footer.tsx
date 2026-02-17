@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <h3 className="font-serif text-white text-2xl mb-4">Maison Elara</h3>
+            <h3 className="font-serif text-white text-2xl mb-4">Golden Tee</h3>
             <p className="text-sm text-stone-400 leading-relaxed">
               A boutique retreat where design meets story. Every corner, a chapter.
             </p>
@@ -100,7 +100,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-stone-800 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-stone-600">
-          <p>© {new Date().getFullYear()} Maison Elara. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Golden Tee. All rights reserved.</p>
           <p>Crafted with care in Paris.</p>
         </div>
       </div>

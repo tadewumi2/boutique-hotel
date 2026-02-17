@@ -6,11 +6,11 @@ import AmenitiesTeaser from '@/components/home/AmenitiesTeaser'
 import CtaBanner from '@/components/home/CtaBanner'
 
 export const metadata = {
-  title: 'Maison Elara — Boutique Hotel Paris',
+  title: 'Golden Tee — Boutique Hotel Paris',
   description:
     'An intimate boutique retreat in the heart of Paris. Thoughtfully designed rooms, curated experiences, and a warmth you will carry home.',
   openGraph: {
-    title: 'Maison Elara — Boutique Hotel Paris',
+    title: 'Golden Tee — Boutique Hotel Paris',
     description: 'An intimate boutique retreat in the heart of Paris.',
     images: ['/images/hero.jpg'],
   },

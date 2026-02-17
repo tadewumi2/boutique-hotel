@@ -1,19 +1,34 @@
 import type { Metadata } from 'next'
-import { experiences, nearbyPlaces } from '@/lib/experiences'
+import { getExperiences, nearbyPlaces } from '@/lib/experiences'
 import ExperienceCard from '@/components/experience/ExperienceCard'
 import NearbySection from '@/components/experience/NearbySection'
 import ExperienceCta from '@/components/experience/ExperienceCta'
 
 export const metadata: Metadata = {
-  title: 'The Experience',
+  title: 'The Experience — Golden Tee',
   description:
-    'Discover the full Maison Elara experience — from private dining and gallery walks to rooftop wellness and curated Parisian itineraries.',
+    'Discover the full Golden Tee experience — from private dining and gallery walks to rooftop wellness and curated Parisian itineraries.',
 }
 
-// Group experiences by category for section anchors — US-C2
-const categories = Array.from(new Set(experiences.map((e) => e.category)))
+export default async function ExperiencePage() {
+  const experiences = await getExperiences()
 
-export default function ExperiencePage() {
+  // Group by category, preserving order from CMS
+  const categoryMap = new Map<string, typeof experiences>()
+  for (const exp of experiences) {
+    if (!categoryMap.has(exp.category)) categoryMap.set(exp.category, [])
+    categoryMap.get(exp.category)!.push(exp)
+  }
+  const categories = Array.from(categoryMap.entries())
+
+  // Category heading labels
+  const categoryHeadings: Record<string, string> = {
+    'Food & Wine': 'Taste the City',
+    Culture: 'Live the Culture',
+    Wellness: 'Restore Yourself',
+    Exploration: 'Find Your Paris',
+  }
+
   return (
     <main className="pt-24">
       {/* Page hero */}
@@ -34,14 +49,14 @@ export default function ExperiencePage() {
         </div>
       </div>
 
-      {/* Section anchors nav — US-C2 */}
+      {/* Sticky category nav */}
       <div className="sticky top-16 z-30 bg-white/90 backdrop-blur-sm border-b border-stone-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex gap-6 overflow-x-auto py-3 scrollbar-none">
-            {categories.map((cat) => (
+            {categories.map(([cat]) => (
               <a
                 key={cat}
-                href={`#${experiences.find((e) => e.category === cat)?.anchor}`}
+                href={`#${cat.toLowerCase().replace(/\s+/g, '-').replace('&', 'and')}`}
                 className="text-sm font-medium text-stone-500 hover:text-amber-600 whitespace-nowrap transition-colors pb-1 border-b-2 border-transparent hover:border-amber-500"
               >
                 {cat}
@@ -57,41 +72,39 @@ export default function ExperiencePage() {
         </div>
       </div>
 
-      {/* Experience sections — US-C1, C2 */}
+      {/* Experience sections — US-2E5 */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 space-y-24">
-        {categories.map((cat) => {
-          const catExperiences = experiences.filter((e) => e.category === cat)
-          const anchor = catExperiences[0]?.anchor
-          return (
-            <section key={cat} id={anchor} className="scroll-mt-28">
-              {/* Category heading */}
-              <div className="mb-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-600 mb-2">
-                  {cat}
-                </p>
-                <h2 className="font-serif text-3xl text-stone-900">
-                  {cat === 'Food & Wine' && 'Taste the City'}
-                  {cat === 'Culture' && 'Live the Culture'}
-                  {cat === 'Wellness' && 'Restore Yourself'}
-                  {cat === 'Exploration' && 'Find Your Paris'}
-                </h2>
-              </div>
-
-              {/* Cards grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {catExperiences.map((exp) => (
-                  <ExperienceCard key={exp.slug} exp={exp} />
-                ))}
-              </div>
-            </section>
-          )
-        })}
+        {categories.length > 0 ? (
+          categories.map(([cat, exps]) => {
+            const anchor = cat.toLowerCase().replace(/\s+/g, '-').replace('&', 'and')
+            return (
+              <section key={cat} id={anchor} className="scroll-mt-28">
+                <div className="mb-10">
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-600 mb-2">
+                    {cat}
+                  </p>
+                  <h2 className="font-serif text-3xl text-stone-900">
+                    {categoryHeadings[cat] ?? cat}
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {exps.map((exp) => (
+                    <ExperienceCard key={exp.slug} exp={exp} />
+                  ))}
+                </div>
+              </section>
+            )
+          })
+        ) : (
+          <p className="text-center text-stone-400 py-20 text-sm tracking-widest uppercase">
+            No experiences published yet.
+          </p>
+        )}
       </div>
 
-      {/* Nearby section — US-C5 */}
+      {/* Nearby — static data, no CMS needed */}
       <NearbySection places={nearbyPlaces} />
 
-      {/* CTA — US-C7 */}
       <ExperienceCta />
     </main>
   )

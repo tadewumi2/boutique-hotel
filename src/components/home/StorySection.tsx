@@ -11,7 +11,7 @@ export default function StorySection() {
           <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
             <Image
               src="/images/story-lobby.jpg"
-              alt="Maison Elara lobby bathed in warm afternoon light"
+              alt="Golden Tee lobby bathed in warm afternoon light"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -28,7 +28,7 @@ export default function StorySection() {
               <em className="italic text-stone-500">Not Convention</em>
             </h2>
             <p className="text-stone-500 leading-relaxed mb-4">
-              Maison Elara began as a love letter to slow living. Tucked within a 19th-century
+              Golden Tee began as a love letter to slow living. Tucked within a 19th-century
               Haussmann building, every space was imagined not as a room to sleep in, but as a place
               to arrive.
             </p>
@@ -76,7 +76,7 @@ export default function StorySection() {
           <div className="order-1 lg:order-2 relative aspect-[4/3] rounded-xl overflow-hidden">
             <Image
               src="/images/story-paris.jpg"
-              alt="Parisian street view near Maison Elara at golden hour"
+              alt="Parisian street view near Golden Tee at golden hour"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
