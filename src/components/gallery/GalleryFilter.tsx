@@ -23,7 +23,7 @@ export default function GalleryFilter({ categories, active, onChange, counts }: 
           }`}
         >
           {cat}
-          <span className={`ml-1.5 text-xs ${active === cat ? 'text-white/60' : 'text-stone-400'}`}>
+          <span className={`ml-1.5 text-xs ${active === cat ? 'text-white/60' : 'text-stone-500'}`}>
             ({counts[cat] ?? 0})
           </span>
         </button>

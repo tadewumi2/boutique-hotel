@@ -6,7 +6,7 @@ const iconMap: Record<string, LucideIcon> = { Car, Train, Plane, Footprints }
 export default function GettingThere({ methods }: { methods: TravelMethod[] }) {
   return (
     <section id="getting-here" className="scroll-mt-28">
-      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-600 mb-3">
+      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-700 mb-3">
         Getting Here
       </p>
       {/* US-F9 — semantic H2 */}
@@ -23,15 +23,15 @@ export default function GettingThere({ methods }: { methods: TravelMethod[] }) {
               {/* Header */}
               <div className="flex items-start gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
-                  <Icon size={17} className="text-amber-600" aria-hidden="true" />
+                  <Icon size={17} className="text-amber-700" aria-hidden="true" />
                 </div>
                 <div>
                   {/* US-F9 — semantic H3 */}
                   <h3 className="text-sm font-semibold text-stone-900">{method.title}</h3>
                   {method.duration && (
                     <div className="flex items-center gap-1.5 mt-0.5">
-                      <Clock size={11} className="text-stone-400" aria-hidden="true" />
-                      <span className="text-xs text-stone-400">{method.duration}</span>
+                      <Clock size={11} className="text-stone-500" aria-hidden="true" />
+                      <span className="text-xs text-stone-500">{method.duration}</span>
                     </div>
                   )}
                 </div>
@@ -42,9 +42,9 @@ export default function GettingThere({ methods }: { methods: TravelMethod[] }) {
                 {method.steps.map((step, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-3 text-sm text-stone-500 leading-relaxed"
+                    className="flex items-start gap-3 text-sm text-stone-600 leading-relaxed"
                   >
-                    <span className="w-5 h-5 rounded-full bg-stone-100 text-stone-400 text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="w-5 h-5 rounded-full bg-stone-100 text-stone-500 text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
                       {i + 1}
                     </span>
                     {step}

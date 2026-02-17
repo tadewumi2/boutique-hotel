@@ -30,16 +30,16 @@ export default function GalleryClient({ images }: Props) {
       <main className="pt-24">
         {/* Page header */}
         <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-12 pb-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-600 mb-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-700 mb-3">
             Gallery
           </p>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <h1 className="font-serif text-5xl lg:text-6xl text-stone-900 leading-tight">
               See the Hotel
               <br />
-              <em className="italic text-stone-400">As It Really Is</em>
+              <em className="italic text-stone-500">As It Really Is</em>
             </h1>
-            <p className="text-stone-500 text-sm max-w-sm leading-relaxed">
+            <p className="text-stone-600 text-sm max-w-sm leading-relaxed">
               Every image is unfiltered and unretouched. What you see is exactly what awaits you.
             </p>
           </div>
@@ -58,7 +58,7 @@ export default function GalleryClient({ images }: Props) {
 
         {/* Image count */}
         <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-6">
-          <p className="text-xs text-stone-400">
+          <p className="text-xs text-stone-500">
             Showing {filtered.length} {filtered.length === 1 ? 'image' : 'images'}
             {activeCategory !== 'All' && ` in ${activeCategory}`}
           </p>

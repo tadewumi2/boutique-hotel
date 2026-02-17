@@ -80,7 +80,7 @@ export default function AmenityItem({ amenity, onOpenDetail }: Props) {
         className="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center shrink-0 shadow-sm"
         aria-hidden="true"
       >
-        <Icon size={17} className="text-amber-500" />
+        <Icon size={17} className="text-amber-600" />
       </div>
 
       <div className="flex-1 min-w-0">
@@ -101,23 +101,23 @@ export default function AmenityItem({ amenity, onOpenDetail }: Props) {
 
         {/* Description */}
         {amenity.description && (
-          <p className="text-xs text-stone-500 leading-relaxed mb-1.5">{amenity.description}</p>
+          <p className="text-xs text-stone-600 leading-relaxed mb-1.5">{amenity.description}</p>
         )}
 
         {/* Availability — US-D4 */}
         {amenity.availability && (
-          <div className="flex items-center gap-1.5 text-xs text-stone-400">
+          <div className="flex items-center gap-1.5 text-xs text-stone-500">
             <Clock size={11} aria-hidden="true" />
             <span>{amenity.availability}</span>
           </div>
         )}
 
         {/* Note — US-D3 */}
-        {amenity.note && <p className="text-xs text-stone-400 italic mt-1">{amenity.note}</p>}
+        {amenity.note && <p className="text-xs text-stone-500 italic mt-1">{amenity.note}</p>}
 
         {/* Detail link hint */}
         {amenity.hasDetail && (
-          <p className="text-xs text-amber-600 font-medium mt-1.5 group-hover:underline">
+          <p className="text-xs text-amber-700 font-medium mt-1.5 group-hover:underline">
             View details →
           </p>
         )}

@@ -29,21 +29,21 @@ export default function ExperienceCard({ exp }: { exp: Experience }) {
           <SeasonalBadge season={exp.season} />
         </div>
 
-        <p className="text-sm text-amber-600 font-medium italic mb-3">{exp.tagline}</p>
-        <p className="text-sm text-stone-500 leading-relaxed mb-5 line-clamp-2">
+        <p className="text-sm text-amber-700 font-medium italic mb-3">{exp.tagline}</p>
+        <p className="text-sm text-stone-600 leading-relaxed mb-5 line-clamp-2">
           {exp.description}
         </p>
 
         <div className="flex flex-col gap-2 mb-5">
           {exp.hours && (
-            <div className="flex items-center gap-2 text-xs text-stone-400">
-              <Clock size={12} className="shrink-0 text-amber-500" />
+            <div className="flex items-center gap-2 text-xs text-stone-500">
+              <Clock size={12} className="shrink-0 text-amber-600" />
               {exp.hours}
             </div>
           )}
           {exp.pricingNote && (
-            <div className="flex items-center gap-2 text-xs text-stone-400">
-              <BadgeInfo size={12} className="shrink-0 text-amber-500" />
+            <div className="flex items-center gap-2 text-xs text-stone-500">
+              <BadgeInfo size={12} className="shrink-0 text-amber-700" />
               {exp.pricingNote}
             </div>
           )}
@@ -59,7 +59,7 @@ export default function ExperienceCard({ exp }: { exp: Experience }) {
 
         <Link
           href={`/experience/${exp.slug}`}
-          className="flex items-center justify-between w-full px-5 py-3 rounded-full bg-stone-900 hover:bg-amber-500 text-white text-sm font-medium transition-colors duration-200 group/btn"
+          className="flex items-center justify-between w-full px-5 py-3 rounded-full bg-stone-900 hover:bg-amber-500 text-white hover:text-stone-900 text-sm font-medium transition-colors duration-200 group/btn"
         >
           Learn More
           <ArrowRight size={15} className="transition-transform group-hover/btn:translate-x-1" />

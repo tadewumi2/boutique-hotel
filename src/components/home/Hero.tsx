@@ -20,7 +20,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-400 mb-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-500 mb-5">
           Paris · Boutique Hotel
         </p>
         <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.1] mb-6">
@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-white font-medium text-sm transition-all duration-200 hover:gap-3"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-900 font-medium text-sm transition-all duration-200 hover:gap-3"
           >
             Book Your Stay
             <ArrowRight size={16} />

@@ -19,16 +19,16 @@ export default function MapEmbed() {
           aria-label="Load interactive map"
         >
           <div className="w-14 h-14 rounded-full bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
-            <MapPin size={24} className="text-amber-500" />
+            <MapPin size={24} className="text-amber-600" />
           </div>
           <div className="text-center">
             <p className="text-sm font-semibold text-stone-700">View on Map</p>
-            <p className="text-xs text-stone-400 mt-0.5">Click to load interactive map</p>
+            <p className="text-xs text-stone-500 mt-0.5">Click to load interactive map</p>
           </div>
           {/* Static location pin overlay */}
           <div className="absolute bottom-4 left-4 bg-white rounded-xl px-4 py-2 shadow-sm">
             <p className="text-xs font-semibold text-stone-800">{hotelLocation.name}</p>
-            <p className="text-xs text-stone-400">{hotelLocation.address.full}</p>
+            <p className="text-xs text-stone-500">{hotelLocation.address.full}</p>
           </div>
         </button>
       ) : (

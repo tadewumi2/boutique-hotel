@@ -89,7 +89,7 @@ export default function GalleryLightbox({ images, startIndex, onClose }: Props) 
         </span>
 
         {/* Category tag */}
-        <span className="text-xs font-semibold uppercase tracking-widest text-amber-400 bg-white/10 px-3 py-1 rounded-full">
+        <span className="text-xs font-semibold uppercase tracking-widest text-amber-500 bg-white/10 px-3 py-1 rounded-full">
           {img.category}
         </span>
 

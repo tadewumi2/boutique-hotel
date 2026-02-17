@@ -59,7 +59,7 @@ export const statusConfig: Record<AmenityStatus, { label: string; color: string 
 }
 
 export const seasonConfig: Record<AmenitySeason, { label: string; color: string }> = {
-  'year-round': { label: 'Year-Round', color: 'bg-stone-100 text-stone-500' },
+  'year-round': { label: 'Year-Round', color: 'bg-stone-100 text-stone-600' },
   summer: { label: 'Summer', color: 'bg-yellow-100 text-yellow-700' },
   winter: { label: 'Winter', color: 'bg-blue-100 text-blue-600' },
   seasonal: { label: 'Seasonal', color: 'bg-orange-100 text-orange-700' },

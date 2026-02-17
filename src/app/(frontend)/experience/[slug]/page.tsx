@@ -20,11 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!exp) return {}
 
   // Use SEO overrides if set, otherwise fall back to experience data
-  const title = exp.seo?.metaTitle || `${exp.title} — Maison Elara`
+  const title = exp.seo?.metaTitle || `${exp.title} — Golden Tee`
   const description = exp.seo?.metaDescription || exp.description
 
   return {
-    title: `${exp.title} — Maison Elara`,
+    title: `${exp.title} — Golden Tee`,
     description: exp.description,
     openGraph: { images: [exp.image.url] },
   }
@@ -39,7 +39,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
     <main className="pt-24 pb-16">
       <div className="max-w-5xl mx-auto px-6 lg:px-10">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-stone-400 pt-8 pb-8">
+        <nav className="flex items-center gap-2 text-xs text-stone-500 pt-8 pb-8">
           <Link href="/" className="hover:text-stone-600 transition-colors">
             Home
           </Link>
@@ -63,7 +63,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           <div className="absolute bottom-8 left-8">
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-400 bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider -400 bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
               {exp.category}
             </span>
           </div>
@@ -76,16 +76,16 @@ export default async function ExperienceDetailPage({ params }: Props) {
               <h1 className="font-serif text-4xl text-stone-900">{exp.title}</h1>
               <SeasonalBadge season={exp.season} />
             </div>
-            <p className="text-amber-600 font-medium italic text-lg mb-6">{exp.tagline}</p>
+            <p className="text-amber-700 font-medium italic text-lg mb-6">{exp.tagline}</p>
             {/* Description — fallback to short description until rich text renderer added */}
-            <p className="text-stone-500 leading-relaxed mb-8">{exp.description}</p>
+            <p className="text-stone-600 leading-relaxed mb-8">{exp.description}</p>
 
             {/* Features */}
             <h2 className="font-serif text-xl text-stone-900 mb-4">What's Included</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-10">
               {exp.features.map((f) => (
                 <div key={f} className="flex items-center gap-2.5 text-sm text-stone-600">
-                  <Check size={14} className="text-amber-500 shrink-0" />
+                  <Check size={14} className="text-amber-600 shrink-0" />
                   {f}
                 </div>
               ))}
@@ -111,7 +111,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
 
             <Link
               href="/experience"
-              className="inline-flex items-center gap-2 text-sm text-stone-400 hover:text-stone-700 transition-colors group"
+              className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-stone-700 transition-colors group"
             >
               <ChevronLeft size={15} className="transition-transform group-hover:-translate-x-1" />
               Back to All Experiences
@@ -125,9 +125,9 @@ export default async function ExperienceDetailPage({ params }: Props) {
               <div className="flex flex-col gap-4 mb-6">
                 {exp.hours && (
                   <div className="flex items-start gap-3">
-                    <Clock size={15} className="text-amber-500 mt-0.5 shrink-0" />
+                    <Clock size={15} className="text-amber-600 mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-xs text-stone-400 uppercase tracking-wider mb-0.5">
+                      <p className="text-xs text-stone-500 uppercase tracking-wider mb-0.5">
                         Hours
                       </p>
                       <p className="text-sm text-stone-700">{exp.hours}</p>
@@ -136,9 +136,9 @@ export default async function ExperienceDetailPage({ params }: Props) {
                 )}
                 {exp.pricingNote && (
                   <div className="flex items-start gap-3">
-                    <BadgeInfo size={15} className="text-amber-500 mt-0.5 shrink-0" />
+                    <BadgeInfo size={15} className="text-amber-600 mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-xs text-stone-400 uppercase tracking-wider mb-0.5">
+                      <p className="text-xs text-stone-500 uppercase tracking-wider mb-0.5">
                         Pricing
                       </p>
                       <p className="text-sm text-stone-700">{exp.pricingNote}</p>
@@ -147,9 +147,9 @@ export default async function ExperienceDetailPage({ params }: Props) {
                 )}
                 {exp.reservationNote && (
                   <div className="flex items-start gap-3">
-                    <CalendarCheck size={15} className="text-amber-500 mt-0.5 shrink-0" />
+                    <CalendarCheck size={15} className="text-amber-600 mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-xs text-stone-400 uppercase tracking-wider mb-0.5">
+                      <p className="text-xs text-stone-500 uppercase tracking-wider mb-0.5">
                         Reservations
                       </p>
                       <p className="text-sm text-stone-700">{exp.reservationNote}</p>
@@ -160,7 +160,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
               <Link
                 href="/contact"
                 data-analytics="experience-detail-cta"
-                className="flex items-center justify-between w-full px-5 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-white font-medium text-sm transition-colors group"
+                className="flex items-center justify-between w-full px-5 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-900 font-medium text-sm transition-colors group"
               >
                 Book This Experience
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />

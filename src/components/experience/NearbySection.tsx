@@ -18,7 +18,7 @@ export default function NearbySection({ places }: { places: NearbyPlace[] }) {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-500 mb-3">
               The Neighbourhood
             </p>
             <h2 className="font-serif text-4xl text-white leading-tight">
@@ -29,7 +29,7 @@ export default function NearbySection({ places }: { places: NearbyPlace[] }) {
           </div>
           <Link
             href="/location"
-            className="inline-flex items-center gap-2 text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors group shrink-0"
+            className="inline-flex items-center gap-2 text-sm font-medium text-amber-600 hover:text-amber-300 transition-colors group shrink-0"
           >
             View Full Map
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
@@ -46,7 +46,7 @@ export default function NearbySection({ places }: { places: NearbyPlace[] }) {
                 className="flex items-start gap-4 p-5 rounded-xl bg-stone-800 hover:bg-stone-700 transition-colors duration-200"
               >
                 <div className="w-9 h-9 rounded-full bg-stone-700 flex items-center justify-center shrink-0">
-                  <MapPin size={15} className="text-amber-400" />
+                  <MapPin size={15} className="text-amber-500" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2 mb-1">

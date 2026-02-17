@@ -29,7 +29,7 @@ export default function ExperienceHighlights() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-500 mb-3">
               The Experience
             </p>
             <h2 className="font-serif text-4xl md:text-5xl text-white leading-tight">
@@ -40,7 +40,7 @@ export default function ExperienceHighlights() {
           </div>
           <Link
             href="/experience"
-            className="inline-flex items-center gap-2 text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors group shrink-0"
+            className="inline-flex items-center gap-2 text-sm font-medium text-amber-600 hover:text-amber-300 transition-colors group shrink-0"
           >
             Explore Experiences
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
@@ -60,7 +60,7 @@ export default function ExperienceHighlights() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-                <span className="absolute top-4 left-4 text-xs font-semibold uppercase tracking-widest text-amber-400 bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
+                <span className="absolute top-4 left-4 text-xs font-semibold uppercase tracking-widest text-amber-500 bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
                   {item.tag}
                 </span>
               </div>

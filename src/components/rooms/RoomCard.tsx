@@ -18,16 +18,16 @@ export default function RoomCard({ room }: { room: Room }) {
         />
         {/* Popular badge */}
         {room.popular && (
-          <span className="absolute top-4 left-4 bg-amber-500 text-white text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
+          <span className="absolute top-4 left-4 bg-amber-500 text-stone-900 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
             Popular
           </span>
         )}
         {/* Price */}
         <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-1.5 text-right">
-          <p className="text-xs text-stone-400 leading-none mb-0.5">From</p>
+          <p className="text-xs text-stone-500 leading-none mb-0.5">From</p>
           <p className="text-base font-semibold text-stone-900">
             €{room.priceFrom}
-            <span className="text-xs font-normal text-stone-400">/night</span>
+            <span className="text-xs font-normal text-stone-500">/night</span>
           </p>
         </div>
       </div>
@@ -35,28 +35,28 @@ export default function RoomCard({ room }: { room: Room }) {
       {/* Content */}
       <div className="p-6">
         <h3 className="font-serif text-xl text-stone-900 mb-2">{room.name}</h3>
-        <p className="text-sm text-stone-500 leading-relaxed mb-5 line-clamp-2">
+        <p className="text-sm text-stone-600 leading-relaxed mb-5 line-clamp-2">
           {room.shortDescription}
         </p>
 
         {/* Key info grid — US-B2, B6 */}
         <div className="grid grid-cols-2 gap-3 mb-5">
-          <div className="flex items-center gap-2 text-xs text-stone-500">
-            <Users size={13} className="text-amber-500 shrink-0" />
+          <div className="flex items-center gap-2 text-xs text-stone-600">
+            <Users size={13} className="text-amber-600 shrink-0" />
             <span>
               {room.occupancy} {room.occupancy === 1 ? 'Guest' : 'Guests'}
             </span>
           </div>
-          <div className="flex items-center gap-2 text-xs text-stone-500">
-            <BedDouble size={13} className="text-amber-500 shrink-0" />
+          <div className="flex items-center gap-2 text-xs text-stone-600">
+            <BedDouble size={13} className="text-amber-600 shrink-0" />
             <span>{room.bedType}</span>
           </div>
-          <div className="flex items-center gap-2 text-xs text-stone-500">
-            <Maximize2 size={13} className="text-amber-500 shrink-0" />
+          <div className="flex items-center gap-2 text-xs text-stone-600">
+            <Maximize2 size={13} className="text-amber-600 shrink-0" />
             <span>{room.size} m²</span>
           </div>
-          <div className="flex items-center gap-2 text-xs text-stone-500">
-            <Eye size={13} className="text-amber-500 shrink-0" />
+          <div className="flex items-center gap-2 text-xs text-stone-600">
+            <Eye size={13} className="text-amber-700 shrink-0" />
             <span>{room.view}</span>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function RoomCard({ room }: { room: Room }) {
         {/* CTA */}
         <Link
           href={`/rooms/${room.slug}`}
-          className="flex items-center justify-between w-full px-5 py-3 rounded-full bg-stone-900 hover:bg-amber-500 text-white text-sm font-medium transition-colors duration-200 group/btn"
+          className="flex items-center justify-between w-full px-5 py-3 rounded-full bg-stone-900 hover:bg-amber-500 text-white hover:text-stone-900 text-sm font-medium transition-colors duration-200 group/btn"
         >
           View Details
           <ArrowRight size={15} className="transition-transform group-hover/btn:translate-x-1" />

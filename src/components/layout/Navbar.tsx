@@ -81,7 +81,7 @@ export default function Navbar() {
         <Link
           href="/contact"
           onClick={() => trackBookClick('navbar_desktop')}
-          className="hidden md:inline-flex items-center px-5 py-2 text-sm font-medium rounded-full border transition-all duration-200 border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white"
+          className="hidden md:inline-flex items-center px-5 py-2 text-sm font-medium rounded-full border transition-all duration-200 border-amber-500 text-amber-700 hover:bg-amber-500 hover:text-stone-900"
         >
           Book Now
         </Link>
@@ -108,7 +108,7 @@ export default function Navbar() {
               <Link
                 href={href}
                 className={`block py-3 text-sm font-medium border-b border-stone-100 transition-colors ${
-                  pathname === href ? 'text-amber-600' : 'text-stone-700 hover:text-stone-900'
+                  pathname === href ? 'text-amber-700' : 'text-stone-700 hover:text-stone-900'
                 }`}
               >
                 {label}
@@ -119,7 +119,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => trackBookClick('navbar_mobile')}
-              className="block text-center py-3 rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-amber-600 transition-colors"
+              className="block text-center py-3 rounded-full bg-amber-500 text-stone-900 text-sm font-medium hover:bg-amber-600 transition-colors"
             >
               Book Now
             </Link>

@@ -20,7 +20,7 @@ export default function LocationPage() {
     <main className="pt-24">
       {/* Page header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-12 pb-12">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-600 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-700 mb-3">
           Location
         </p>
         {/* US-F9 — semantic H1 */}
@@ -28,9 +28,9 @@ export default function LocationPage() {
           <h1 className="font-serif text-5xl lg:text-6xl text-stone-900 leading-tight">
             In the Heart
             <br />
-            <em className="italic text-stone-400">of Paris</em>
+            <em className="italic text-stone-500">of Paris</em>
           </h1>
-          <p className="text-stone-500 text-base leading-relaxed max-w-md">{hotelLocation.intro}</p>
+          <p className="text-stone-600 text-base leading-relaxed max-w-md">{hotelLocation.intro}</p>
         </div>
       </div>
 
@@ -48,7 +48,7 @@ export default function LocationPage() {
               <a
                 key={href}
                 href={href}
-                className="text-sm font-medium text-stone-500 hover:text-amber-600 whitespace-nowrap transition-colors pb-1 border-b-2 border-transparent hover:border-amber-500"
+                className="text-sm font-medium text-stone-600 hover:text-amber-700 whitespace-nowrap transition-colors pb-1 border-b-2 border-transparent hover:border-amber-500"
               >
                 {label}
               </a>
@@ -87,9 +87,9 @@ export default function LocationPage() {
                     rel="noopener noreferrer"
                     data-analytics="location-google-maps-click"
                     aria-label="Open hotel location in Google Maps (opens in new tab)"
-                    className="flex items-center gap-2.5 w-full px-4 py-3 rounded-xl bg-white border border-stone-200 hover:border-amber-400 text-sm font-medium text-stone-700 hover:text-amber-600 transition-all"
+                    className="flex items-center gap-2.5 w-full px-4 py-3 rounded-xl bg-white border border-stone-200 hover:border-amber-400 text-sm font-medium text-stone-700 hover:text-amber-700 transition-all"
                   >
-                    <Map size={15} className="text-amber-500" aria-hidden="true" />
+                    <Map size={15} className="text-amber-600" aria-hidden="true" />
                     Open in Google Maps
                   </a>
                   <a
@@ -98,9 +98,9 @@ export default function LocationPage() {
                     rel="noopener noreferrer"
                     data-analytics="location-apple-maps-click"
                     aria-label="Open hotel location in Apple Maps (opens in new tab)"
-                    className="flex items-center gap-2.5 w-full px-4 py-3 rounded-xl bg-white border border-stone-200 hover:border-amber-400 text-sm font-medium text-stone-700 hover:text-amber-600 transition-all"
+                    className="flex items-center gap-2.5 w-full px-4 py-3 rounded-xl bg-white border border-stone-200 hover:border-amber-400 text-sm font-medium text-stone-700 hover:text-amber-700 transition-all"
                   >
-                    <Navigation size={15} className="text-amber-500" aria-hidden="true" />
+                    <Navigation size={15} className="text-amber-600" aria-hidden="true" />
                     Open in Apple Maps
                   </a>
                 </div>
@@ -124,15 +124,15 @@ export default function LocationPage() {
 
       {/* CTA — US-F6, F10 */}
       <div className="max-w-3xl mx-auto px-6 lg:px-10 py-24 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-600 mb-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 mb-4">
           The Location Works?
         </p>
         <h2 className="font-serif text-4xl md:text-5xl text-stone-900 leading-tight mb-5">
           Then all that's left
           <br />
-          <em className="italic text-amber-600">is booking.</em>
+          <em className="italic text-amber-700">is booking.</em>
         </h2>
-        <p className="text-stone-500 text-sm max-w-md mx-auto leading-relaxed mb-10">
+        <p className="text-stone-600 text-sm max-w-md mx-auto leading-relaxed mb-10">
           Reserve your room, arrange a transfer, or simply reach out with a question. We're here
           before you even arrive.
         </p>
@@ -140,7 +140,7 @@ export default function LocationPage() {
           <Link
             href="/contact"
             data-analytics="location-cta-book"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-amber-500 hover:bg-amber-400 text-white font-medium text-sm transition-all duration-200 group"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-900 font-medium text-sm transition-all duration-200 group"
           >
             Book Your Stay
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />

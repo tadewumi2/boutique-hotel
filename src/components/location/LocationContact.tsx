@@ -14,7 +14,7 @@ export default function LocationContact() {
         {/* Address — US-F7 copyable, US-F9 text outside map */}
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-            <MapPin size={16} className="text-amber-400" aria-hidden="true" />
+            <MapPin size={16} className="text-amber-500" aria-hidden="true" />
           </div>
           <div>
             <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">Address</p>
@@ -32,13 +32,13 @@ export default function LocationContact() {
         {/* Phone — US-F7 clickable on mobile */}
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-            <Phone size={16} className="text-amber-400" aria-hidden="true" />
+            <Phone size={16} className="text-amber-500" aria-hidden="true" />
           </div>
           <div>
             <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">Phone</p>
             <a
               href={hotelLocation.contact.phoneHref}
-              className="text-sm text-white hover:text-amber-400 transition-colors"
+              className="text-sm text-white hover:text-amber-500 transition-colors"
               aria-label={`Call us at ${hotelLocation.contact.phone}`}
               data-analytics="location-phone-click"
             >
@@ -50,13 +50,13 @@ export default function LocationContact() {
         {/* Email — US-F7 opens mail client */}
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-            <Mail size={16} className="text-amber-400" aria-hidden="true" />
+            <Mail size={16} className="text-amber-500" aria-hidden="true" />
           </div>
           <div>
             <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">Email</p>
             <a
               href={hotelLocation.contact.emailHref}
-              className="text-sm text-white hover:text-amber-400 transition-colors"
+              className="text-sm text-white hover:text-amber-500 transition-colors"
               aria-label="Send us an email"
               data-analytics="location-email-click"
             >

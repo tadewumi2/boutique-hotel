@@ -14,7 +14,7 @@ const inputClass = (error?: string) =>
       : 'border-stone-200 focus:ring-amber-400 focus:border-transparent bg-white'
   }`
 
-const labelClass = 'block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-1.5'
+const labelClass = 'block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5'
 
 export default function ContactForm() {
   const [state, setState] = useState<FormState>('idle')
@@ -87,13 +87,13 @@ export default function ContactForm() {
           <CheckCircle size={32} className="text-green-600" />
         </div>
         <h3 className="font-serif text-2xl text-stone-900 mb-2">Message Received</h3>
-        <p className="text-stone-500 text-sm leading-relaxed max-w-sm mb-6">
+        <p className="text-stone-600 text-sm leading-relaxed max-w-sm mb-6">
           Thank you for reaching out. A member of our team will respond within 24 hours — usually
           sooner.
         </p>
         <button
           onClick={() => setState('idle')}
-          className="text-sm font-medium text-amber-600 hover:text-amber-700 underline underline-offset-2"
+          className="text-sm font-medium text-amber-700 hover:text-amber-700 underline underline-offset-2"
         >
           Send another message
         </button>
@@ -267,7 +267,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={state === 'loading'}
-          className="w-full sm:w-auto px-10 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 disabled:bg-stone-200 disabled:text-stone-400 text-white font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2"
+          className="w-full sm:w-auto px-10 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 disabled:bg-stone-200 disabled:text-stone-500 text-stone-900 font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2"
           data-analytics="contact-form-submit"
         >
           {state === 'loading' ? (
@@ -278,7 +278,7 @@ export default function ContactForm() {
             'Send Message'
           )}
         </button>
-        <p className="text-xs text-stone-400 mt-3">
+        <p className="text-xs text-stone-500 mt-3">
           We reply within 24 hours · Your information is never shared.
         </p>
       </div>

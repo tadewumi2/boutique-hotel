@@ -47,7 +47,7 @@ export default async function RoomDetailPage({ params }: Props) {
       <RoomViewTracker slug={slug} name={room.name} />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <nav className="flex items-center gap-2 text-xs text-stone-400 pt-8 pb-6">
+        <nav className="flex items-center gap-2 text-xs text-stone-500 pt-8 pb-6">
           <Link href="/" className="hover:text-stone-600 transition-colors">
             Home
           </Link>
@@ -65,7 +65,7 @@ export default async function RoomDetailPage({ params }: Props) {
 
             <div className="mt-8 mb-6">
               <h1 className="font-serif text-4xl text-stone-900 mb-3">{room.name}</h1>
-              <p className="text-stone-500 leading-relaxed">{room.shortDescription}</p>
+              <p className="text-stone-600 leading-relaxed">{room.shortDescription}</p>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 bg-stone-50 rounded-2xl mb-8">
@@ -76,8 +76,8 @@ export default async function RoomDetailPage({ params }: Props) {
                 { icon: Eye, label: 'View', value: room.view },
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="text-center">
-                  <Icon size={20} className="text-amber-500 mx-auto mb-2" />
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-0.5">{label}</p>
+                  <Icon size={20} className="text-amber-600 mx-auto mb-2" />
+                  <p className="text-xs text-stone-500 uppercase tracking-wider mb-0.5">{label}</p>
                   <p className="text-sm font-medium text-stone-800">{value}</p>
                 </div>
               ))}
@@ -88,7 +88,7 @@ export default async function RoomDetailPage({ params }: Props) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {room.amenities.map((a) => (
                   <div key={a} className="flex items-center gap-2.5 text-sm text-stone-600">
-                    <Check size={14} className="text-amber-500 shrink-0" />
+                    <Check size={14} className="text-amber-600 shrink-0" />
                     {a}
                   </div>
                 ))}
@@ -99,14 +99,14 @@ export default async function RoomDetailPage({ params }: Props) {
               {prev ? (
                 <Link
                   href={`/rooms/${prev.slug}`}
-                  className="flex items-center gap-2 text-sm text-stone-500 hover:text-stone-800 transition-colors group"
+                  className="flex items-center gap-2 text-sm text-stone-600 hover:text-stone-800 transition-colors group"
                 >
                   <ChevronLeft
                     size={16}
                     className="transition-transform group-hover:-translate-x-1"
                   />
                   <span>
-                    <span className="block text-xs text-stone-400">Previous</span>
+                    <span className="block text-xs text-stone-500">Previous</span>
                     {prev.name}
                   </span>
                 </Link>
@@ -116,7 +116,7 @@ export default async function RoomDetailPage({ params }: Props) {
 
               <Link
                 href="/rooms"
-                className="text-xs text-stone-400 hover:text-stone-600 transition-colors uppercase tracking-wider"
+                className="text-xs text-stone-500 hover:text-stone-600 transition-colors uppercase tracking-wider"
               >
                 All Rooms
               </Link>
@@ -124,10 +124,10 @@ export default async function RoomDetailPage({ params }: Props) {
               {next ? (
                 <Link
                   href={`/rooms/${next.slug}`}
-                  className="flex items-center gap-2 text-sm text-stone-500 hover:text-stone-800 transition-colors group text-right"
+                  className="flex items-center gap-2 text-sm text-stone-600 hover:text-stone-800 transition-colors group text-right"
                 >
                   <span>
-                    <span className="block text-xs text-stone-400">Next</span>
+                    <span className="block text-xs text-stone-500">Next</span>
                     {next.name}
                   </span>
                   <ChevronRight

@@ -33,16 +33,16 @@ export default async function ExperiencePage() {
     <main className="pt-24">
       {/* Page hero */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-12 pb-16">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-600 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-700 mb-3">
           The Experience
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
           <h1 className="font-serif text-5xl lg:text-6xl text-stone-900 leading-tight">
             More Than a Stay.
             <br />
-            <em className="italic text-stone-400">A Way of Being.</em>
+            <em className="italic text-stone-500">A Way of Being.</em>
           </h1>
-          <p className="text-stone-500 text-base leading-relaxed max-w-md">
+          <p className="text-stone-600 text-base leading-relaxed max-w-md">
             We believe a great hotel stay is not about the amenities list. It's about the moments —
             planned and unplanned — that stay with you long after you've checked out.
           </p>
@@ -57,14 +57,14 @@ export default async function ExperiencePage() {
               <a
                 key={cat}
                 href={`#${cat.toLowerCase().replace(/\s+/g, '-').replace('&', 'and')}`}
-                className="text-sm font-medium text-stone-500 hover:text-amber-600 whitespace-nowrap transition-colors pb-1 border-b-2 border-transparent hover:border-amber-500"
+                className="text-sm font-medium text-stone-600 hover:text-amber-700 whitespace-nowrap transition-colors pb-1 border-b-2 border-transparent hover:border-amber-500"
               >
                 {cat}
               </a>
             ))}
             <a
               href="#nearby"
-              className="text-sm font-medium text-stone-500 hover:text-amber-600 whitespace-nowrap transition-colors pb-1 border-b-2 border-transparent hover:border-amber-500"
+              className="text-sm font-medium text-stone-600 hover:text-amber-700 whitespace-nowrap transition-colors pb-1 border-b-2 border-transparent hover:border-amber-500"
             >
               Neighbourhood
             </a>
@@ -80,7 +80,7 @@ export default async function ExperiencePage() {
             return (
               <section key={cat} id={anchor} className="scroll-mt-28">
                 <div className="mb-10">
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-600 mb-2">
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-700 mb-2">
                     {cat}
                   </p>
                   <h2 className="font-serif text-3xl text-stone-900">
@@ -96,7 +96,7 @@ export default async function ExperiencePage() {
             )
           })
         ) : (
-          <p className="text-center text-stone-400 py-20 text-sm tracking-widest uppercase">
+          <p className="text-center text-stone-500 py-20 text-sm tracking-widest uppercase">
             No experiences published yet.
           </p>
         )}

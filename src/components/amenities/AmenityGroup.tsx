@@ -12,7 +12,7 @@ export default function AmenityGroup({ group, onOpenDetail }: Props) {
       {/* Group heading — US-D2, D8 semantic */}
       <div className="mb-6">
         <h2 className="font-serif text-2xl text-stone-900 mb-1">{group.title}</h2>
-        {group.subtitle && <p className="text-sm text-stone-400">{group.subtitle}</p>}
+        {group.subtitle && <p className="text-sm text-stone-500">{group.subtitle}</p>}
       </div>
 
       {/* Items grid */}

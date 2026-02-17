@@ -15,16 +15,16 @@ export default function ContactPage() {
     <main className="pt-24">
       {/* Page header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-12 pb-12">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-600 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-700 mb-3">
           Contact & Book
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
           <h1 className="font-serif text-5xl lg:text-6xl text-stone-900 leading-tight">
             Let's Plan
             <br />
-            <em className="italic text-stone-400">Your Stay</em>
+            <em className="italic text-stone-500">Your Stay</em>
           </h1>
-          <p className="text-stone-500 text-base leading-relaxed max-w-md">
+          <p className="text-stone-600 text-base leading-relaxed max-w-md">
             Whether you have a question, a special request, or you're ready to book — our team is
             here. We prefer conversations to booking engines.
           </p>
@@ -42,7 +42,7 @@ export default function ContactPage() {
             target="_blank"
             rel="noopener noreferrer"
             data-analytics="contact-book-now-banner"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-amber-600 font-semibold text-sm hover:bg-amber-50 transition-colors group whitespace-nowrap"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-amber-700 font-semibold text-sm hover:bg-amber-50 transition-colors group whitespace-nowrap"
             aria-label="Book your room directly (opens in new tab)"
           >
             Book Now
@@ -58,7 +58,7 @@ export default function ContactPage() {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl border border-stone-200 p-8">
               <h2 className="font-serif text-2xl text-stone-900 mb-2">Send a Message</h2>
-              <p className="text-sm text-stone-400 mb-8">
+              <p className="text-sm text-stone-500 mb-8">
                 Fields marked <span className="text-red-400">*</span> are required.
               </p>
               <ContactForm />
@@ -76,7 +76,7 @@ export default function ContactPage() {
       <div className="bg-stone-50 border-t border-stone-100 py-16">
         <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
           <h2 className="font-serif text-3xl text-stone-900 mb-4">Common Questions</h2>
-          <p className="text-stone-500 text-sm mb-8 leading-relaxed">
+          <p className="text-stone-600 text-sm mb-8 leading-relaxed">
             A few things guests usually ask before arriving.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
@@ -100,7 +100,7 @@ export default function ContactPage() {
             ].map(({ q, a }) => (
               <div key={q} className="bg-white rounded-xl border border-stone-200 p-5">
                 <h3 className="text-sm font-semibold text-stone-900 mb-2">{q}</h3>
-                <p className="text-xs text-stone-500 leading-relaxed">{a}</p>
+                <p className="text-xs text-stone-600 leading-relaxed">{a}</p>
               </div>
             ))}
           </div>

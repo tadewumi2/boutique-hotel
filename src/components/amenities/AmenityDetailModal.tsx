@@ -52,7 +52,7 @@ export default function AmenityDetailModal({ amenity, onClose }: Props) {
             </div>
             <button
               onClick={onClose}
-              className="text-stone-400 hover:text-stone-600 transition-colors mt-1"
+              className="text-stone-500 hover:text-stone-600 transition-colors mt-1"
               aria-label="Close modal"
             >
               <X size={20} />
@@ -60,13 +60,13 @@ export default function AmenityDetailModal({ amenity, onClose }: Props) {
           </div>
 
           {amenity.detailDescription && (
-            <p className="text-sm text-stone-500 leading-relaxed mb-5">
+            <p className="text-sm text-stone-600 leading-relaxed mb-5">
               {amenity.detailDescription}
             </p>
           )}
 
           {/* Meta */}
-          <div className="flex flex-col gap-2 mb-6 text-xs text-stone-400">
+          <div className="flex flex-col gap-2 mb-6 text-xs text-stone-500">
             {amenity.availability && (
               <p>
                 <span className="font-medium text-stone-600">Hours: </span>
@@ -85,7 +85,7 @@ export default function AmenityDetailModal({ amenity, onClose }: Props) {
           <Link
             href="/contact"
             data-analytics="amenity-detail-cta"
-            className="flex items-center justify-between w-full px-5 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-white font-medium text-sm transition-colors group"
+            className="flex items-center justify-between w-full px-5 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-900 font-medium text-sm transition-colors group"
           >
             Book or Enquire
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />

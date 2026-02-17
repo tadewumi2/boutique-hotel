@@ -12,14 +12,14 @@ export default function ContactDetails() {
           {/* Phone */}
           <div className="flex items-start gap-4">
             <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-              <Phone size={15} className="text-amber-400" aria-hidden="true" />
+              <Phone size={15} className="text-amber-500" aria-hidden="true" />
             </div>
             <div>
               <p className="text-xs text-stone-400 uppercase tracking-wider mb-0.5">Phone</p>
               {/* US-G4 — clickable tel link on mobile */}
               <a
                 href={hotelLocation.contact.phoneHref}
-                className="text-sm text-white hover:text-amber-400 transition-colors"
+                className="text-sm text-white hover:text-amber-500 transition-colors"
                 aria-label={`Call us at ${hotelLocation.contact.phone}`}
                 data-analytics="contact-phone-click"
               >
@@ -31,14 +31,14 @@ export default function ContactDetails() {
           {/* Email */}
           <div className="flex items-start gap-4">
             <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-              <Mail size={15} className="text-amber-400" aria-hidden="true" />
+              <Mail size={15} className="text-amber-500" aria-hidden="true" />
             </div>
             <div>
               <p className="text-xs text-stone-400 uppercase tracking-wider mb-0.5">Email</p>
               {/* US-G4 — mailto link */}
               <a
                 href={hotelLocation.contact.emailHref}
-                className="text-sm text-white hover:text-amber-400 transition-colors"
+                className="text-sm text-white hover:text-amber-600 transition-colors"
                 aria-label="Send us an email"
                 data-analytics="contact-email-click"
               >
@@ -50,7 +50,7 @@ export default function ContactDetails() {
           {/* Address */}
           <div className="flex items-start gap-4">
             <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-              <MapPin size={15} className="text-amber-400" aria-hidden="true" />
+              <MapPin size={15} className="text-amber-500" aria-hidden="true" />
             </div>
             <div>
               <p className="text-xs text-stone-400 uppercase tracking-wider mb-0.5">Address</p>
@@ -67,7 +67,7 @@ export default function ContactDetails() {
           {/* Hours */}
           <div className="flex items-start gap-4">
             <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-              <Clock size={15} className="text-amber-400" aria-hidden="true" />
+              <Clock size={15} className="text-amber-500" aria-hidden="true" />
             </div>
             <div>
               <p className="text-xs text-stone-400 uppercase tracking-wider mb-0.5">Reception</p>
@@ -86,7 +86,7 @@ export default function ContactDetails() {
               key={label}
               href={href}
               aria-label={label}
-              className="w-9 h-9 rounded-full border border-stone-700 flex items-center justify-center text-stone-400 hover:border-amber-500 hover:text-amber-500 transition-colors"
+              className="w-9 h-9 rounded-full border border-stone-700 flex items-center justify-center text-stone-400 hover:border-amber-500 hover:text-amber-600 transition-colors"
             >
               <Icon size={15} aria-hidden="true" />
             </a>

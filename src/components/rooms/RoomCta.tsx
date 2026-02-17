@@ -22,7 +22,7 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
         <Link
           href="/contact"
           onClick={() => trackBookClick('room_cta_mobile')}
-          className="flex-1 py-3 rounded-full bg-amber-500 hover:bg-amber-400 text-white text-sm font-medium text-center transition-colors"
+          className="flex-1 py-3 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-900 text-sm font-medium text-center transition-colors"
         >
           Book Now
         </Link>
@@ -30,17 +30,17 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
 
       {/* Sidebar CTA card — desktop */}
       <div className="hidden lg:block sticky top-28 bg-white rounded-2xl border border-stone-200 shadow-sm p-6">
-        <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">Starting from</p>
+        <p className="text-xs text-stone-500 uppercase tracking-wider mb-1">Starting from</p>
         <p className="font-serif text-4xl text-stone-900 mb-1">
           €{priceFrom}
-          <span className="text-base font-sans font-normal text-stone-400">/night</span>
+          <span className="text-base font-sans font-normal text-stone-500">/night</span>
         </p>
-        <p className="text-xs text-stone-400 mb-6">Includes breakfast for two</p>
+        <p className="text-xs text-stone-500 mb-6">Includes breakfast for two</p>
 
         <Link
           href="/contact"
           onClick={() => trackBookClick('room_cta_desktop')}
-          className="flex items-center justify-between w-full px-5 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-white font-medium text-sm transition-colors mb-3 group"
+          className="flex items-center justify-between w-full px-5 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-900 font-medium text-sm transition-colors mb-3 group"
         >
           Book Now
           <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
@@ -53,7 +53,7 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
           Enquire About This Room
         </button>
 
-        <p className="text-xs text-stone-400 text-center mt-5 leading-relaxed">
+        <p className="text-xs text-stone-500 text-center mt-5 leading-relaxed">
           Free cancellation up to 48 hours before arrival
         </p>
       </div>
@@ -71,11 +71,11 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
             <div className="flex items-start justify-between mb-6">
               <div>
                 <h3 className="font-serif text-2xl text-stone-900">Enquire</h3>
-                <p className="text-sm text-stone-400 mt-1">{roomName}</p>
+                <p className="text-sm text-stone-500 mt-1">{roomName}</p>
               </div>
               <button
                 onClick={() => setModal(false)}
-                className="text-stone-400 hover:text-stone-600"
+                className="text-stone-500 hover:text-stone-600"
               >
                 <X size={20} />
               </button>
@@ -83,7 +83,7 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
 
             <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
               <div>
-                <label className="text-xs font-medium text-stone-500 uppercase tracking-wider block mb-1.5">
+                <label className="text-xs font-medium text-stone-600 uppercase tracking-wider block mb-1.5">
                   Name
                 </label>
                 <input
@@ -93,7 +93,7 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
                 />
               </div>
               <div>
-                <label className="text-xs font-medium text-stone-500 uppercase tracking-wider block mb-1.5">
+                <label className="text-xs font-medium text-stone-600 uppercase tracking-wider block mb-1.5">
                   Email
                 </label>
                 <input
@@ -103,7 +103,7 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
                 />
               </div>
               <div>
-                <label className="text-xs font-medium text-stone-500 uppercase tracking-wider block mb-1.5">
+                <label className="text-xs font-medium text-stone-600 uppercase tracking-wider block mb-1.5">
                   Message
                 </label>
                 <textarea
@@ -114,7 +114,7 @@ export default function RoomCta({ roomName, priceFrom }: { roomName: string; pri
               </div>
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-white font-medium text-sm transition-colors mt-1"
+                className="w-full py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-900 font-medium text-sm transition-colors mt-1"
               >
                 Send Enquiry
               </button>

@@ -9,7 +9,7 @@ type Props = {
 export default function GalleryGrid({ images, onOpen }: Props) {
   if (images.length === 0) {
     return (
-      <div className="text-center py-24 text-stone-400">
+      <div className="text-center py-24 text-stone-500">
         <p className="font-serif text-2xl mb-2">No images in this category</p>
         <p className="text-sm">Try selecting a different filter</p>
       </div>

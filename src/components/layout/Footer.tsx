@@ -21,7 +21,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3 text-stone-400">
-                <MapPin size={15} className="mt-0.5 shrink-0 text-amber-500" />
+                <MapPin size={15} className="mt-0.5 shrink-0 text-amber-600" />
                 <span>42 Rue de la Paix, Paris, France 75001</span>
               </li>
               <li>
@@ -29,7 +29,7 @@ export default function Footer() {
                   href="tel:+33123456789"
                   className="flex items-center gap-3 text-stone-400 hover:text-white transition-colors"
                 >
-                  <Phone size={15} className="shrink-0 text-amber-500" />
+                  <Phone size={15} className="shrink-0 text-amber-600" />
                   +33 1 23 45 67 89
                 </a>
               </li>
@@ -91,7 +91,7 @@ export default function Footer() {
             </div>
             <Link
               href="/privacy-policy"
-              className="text-xs text-stone-500 hover:text-stone-300 transition-colors"
+              className="text-xs text-stone-400 hover:text-stone-300 transition-colors"
             >
               Privacy Policy
             </Link>
@@ -99,7 +99,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-stone-800 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-stone-600">
+        <div className="mt-12 pt-6 border-t border-stone-800 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-stone-400">
           <p>© {new Date().getFullYear()} Golden Tee. All rights reserved.</p>
           <p>Crafted with care in Paris.</p>
         </div>

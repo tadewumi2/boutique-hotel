@@ -61,7 +61,7 @@ export default function RoomsFilter({ rooms, onFilter }: Props) {
     <div className="flex flex-wrap items-center gap-4 py-5 border-b border-stone-200 mb-10">
       {/* Bed type */}
       <div className="flex items-center gap-2">
-        <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Bed</span>
+        <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Bed</span>
         <div className="flex gap-1">
           {BED_TYPES.map((b) => (
             <button
@@ -81,7 +81,7 @@ export default function RoomsFilter({ rooms, onFilter }: Props) {
 
       {/* Occupancy */}
       <div className="flex items-center gap-2">
-        <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">
+        <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
           Guests
         </span>
         <div className="flex gap-1">
@@ -103,7 +103,7 @@ export default function RoomsFilter({ rooms, onFilter }: Props) {
 
       {/* Sort */}
       <div className="flex items-center gap-2 ml-auto">
-        <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Sort</span>
+        <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Sort</span>
         <select
           value={sort}
           onChange={(e) => handleSort(e.target.value)}
@@ -121,7 +121,7 @@ export default function RoomsFilter({ rooms, onFilter }: Props) {
       {isFiltered && (
         <button
           onClick={reset}
-          className="text-xs text-amber-600 hover:text-amber-700 font-medium underline underline-offset-2"
+          className="text-xs text-amber-700 hover:text-amber-700 font-medium underline underline-offset-2"
         >
           Clear filters
         </button>

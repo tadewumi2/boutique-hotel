@@ -13,26 +13,26 @@ export default async function RoomsPreview() {
       {/* Section header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-600 mb-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-700 mb-3">
             Rooms & Suites
           </p>
           <h2 className="font-serif text-4xl md:text-5xl text-stone-900 leading-tight">
             Spaces Made for
             <br />
-            <em className="italic text-stone-500">Rest and Wonder</em>
+            <em className="italic text-stone-600">Rest and Wonder</em>
           </h2>
         </div>
         <div className="flex items-center gap-5 shrink-0">
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 text-sm font-medium text-stone-400 hover:text-stone-700 transition-colors group"
+            className="inline-flex items-center gap-2 text-sm font-medium text-stone-500 hover:text-stone-700 transition-colors group"
           >
             View Gallery
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
             href="/rooms"
-            className="inline-flex items-center gap-2 text-sm font-medium text-amber-600 hover:text-amber-700 transition-colors group"
+            className="inline-flex items-center gap-2 text-sm font-medium text-amber-700 hover:text-amber-700 transition-colors group"
           >
             View All Rooms
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
@@ -63,10 +63,10 @@ export default async function RoomsPreview() {
             <div className="px-1">
               <div className="flex items-center justify-between mb-1.5">
                 <h3 className="font-serif text-xl text-stone-900">{room.name}</h3>
-                <span className="text-xs text-stone-400 font-medium">{room.size} m²</span>
+                <span className="text-xs text-stone-500 font-medium">{room.size} m²</span>
               </div>
-              <p className="text-sm text-stone-500 leading-relaxed mb-3">{room.shortDescription}</p>
-              <span className="text-xs font-semibold text-amber-600 uppercase tracking-wider">
+              <p className="text-sm text-stone-600 leading-relaxed mb-3">{room.shortDescription}</p>
+              <span className="text-xs font-semibold text-amber-700 uppercase tracking-wider">
                 {room.occupancy} guests
               </span>
             </div>

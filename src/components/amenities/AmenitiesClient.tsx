@@ -19,16 +19,16 @@ export default function AmenitiesClient({ groups }: Props) {
       <main className="pt-24">
         {/* Page header */}
         <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-12 pb-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-600 mb-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-700 mb-3">
             Amenities
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
             <h1 className="font-serif text-5xl lg:text-6xl text-stone-900 leading-tight">
               Everything You Need,
               <br />
-              <em className="italic text-stone-400">Nothing Extra.</em>
+              <em className="italic text-stone-500">Nothing Extra.</em>
             </h1>
-            <p className="text-stone-500 text-base leading-relaxed max-w-md">
+            <p className="text-stone-600 text-base leading-relaxed max-w-md">
               We've considered every detail of your stay — from the coffee machine in your room to
               the concierge who knows Paris better than a guidebook.
             </p>
@@ -40,7 +40,7 @@ export default function AmenitiesClient({ groups }: Props) {
           <div className="flex flex-wrap gap-3">
             {[
               { label: 'Included', color: 'bg-green-100 text-green-700' },
-              { label: 'Paid', color: 'bg-amber-100 text-amber-700' },
+              { label: 'Paid', color: 'bg-amber-100 text-amber-800' },
               { label: 'On Request', color: 'bg-blue-100 text-blue-700' },
               { label: 'Seasonal', color: 'bg-orange-100 text-orange-700' },
             ].map(({ label, color }) => (
@@ -59,7 +59,7 @@ export default function AmenitiesClient({ groups }: Props) {
                 <a
                   key={g.id}
                   href={`#${g.id}`}
-                  className="text-sm font-medium text-stone-500 hover:text-amber-600 whitespace-nowrap transition-colors pb-1 border-b-2 border-transparent hover:border-amber-500"
+                  className="text-sm font-medium text-stone-600 hover:text-amber-700 whitespace-nowrap transition-colors pb-1 border-b-2 border-transparent hover:border-amber-500"
                 >
                   {g.title}
                 </a>
@@ -75,7 +75,7 @@ export default function AmenitiesClient({ groups }: Props) {
               <AmenityGroup key={group.id} group={group} onOpenDetail={setActiveAmenity} />
             ))
           ) : (
-            <p className="text-center text-stone-400 py-20 text-sm tracking-widest uppercase">
+            <p className="text-center text-stone-500 py-20 text-sm tracking-widest uppercase">
               No amenities published yet.
             </p>
           )}
@@ -84,7 +84,7 @@ export default function AmenitiesClient({ groups }: Props) {
         {/* CTA */}
         <div className="bg-stone-900 py-20">
           <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-400 mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-500 mb-4">
               Ready to Arrive?
             </p>
             <h2 className="font-serif text-4xl text-white leading-tight mb-5">
@@ -100,7 +100,7 @@ export default function AmenitiesClient({ groups }: Props) {
               <Link
                 href="/contact"
                 data-analytics="amenities-cta-book"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-amber-500 hover:bg-amber-400 text-white font-medium text-sm transition-all duration-200 group"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-900 font-medium text-sm transition-all duration-200 group"
               >
                 Book Your Stay
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />

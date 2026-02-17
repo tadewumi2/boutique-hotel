@@ -11,6 +11,27 @@ export const metadata: Metadata = {
   },
   description: 'An intimate boutique retreat in the heart of Paris.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL ?? 'http://localhost:3000'),
+  openGraph: {
+    title: 'Maison Elara — Boutique Hotel Paris',
+    description: 'An intimate boutique retreat in the heart of Paris.',
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Maison Elara',
+    images: [
+      {
+        url: '/api/media/file/og-1.png',
+        width: 1536,
+        height: 1024,
+        alt: 'Maison Elara — Boutique Hotel Paris',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Maison Elara — Boutique Hotel Paris',
+    description: 'An intimate boutique retreat in the heart of Paris.',
+    images: ['/api/media/file/og-1.png'],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
