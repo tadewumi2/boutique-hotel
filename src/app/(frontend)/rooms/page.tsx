@@ -58,6 +58,8 @@ export default async function RoomsPage() {
                     : `/api/media/file/${room.featuredImage}`,
                 ],
                 popular: room.popular ?? false,
+                order: room.order ?? 99,
+                seo: room.seo ?? undefined,
               }
               return <RoomCard key={room.id} room={normalised} />
             })}

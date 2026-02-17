@@ -17,6 +17,7 @@ export type Room = {
   amenities: string[]
   featuredImage?: { url: string; alt: string }
   gallery: { url: string; alt: string }[]
+  images: string[]
   popular?: boolean
   order: number
   seo?: {
@@ -133,6 +134,7 @@ function normaliseRoom(doc: PayloadRoomDoc): Room {
     gallery: (doc.gallery ?? [])
       .filter((g) => g.image)
       .map((g) => ({ url: g.image.url, alt: g.image.alt })),
+    images: doc.featuredImage ? [doc.featuredImage.url] : [],
     popular: doc.popular,
     order: doc.order,
     seo: doc.seo,
