@@ -63,6 +63,17 @@ export default buildConfig({
     pool: { connectionString: process.env.DATABASE_URI as string },
   }),
 
+  // ── Vercel Blob storage for media uploads ─────────────────────────────────
+  plugins: [
+    vercelBlobStorage({
+      enabled: true,
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN as string,
+    }),
+  ],
+
   // ── Secret ────────────────────────────────────────────────────────────────
   secret: process.env.PAYLOAD_SECRET as string,
 

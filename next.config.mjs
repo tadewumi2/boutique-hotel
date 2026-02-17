@@ -10,6 +10,12 @@ const nextConfig = {
         port: '3000',
         pathname: '/api/media/file/**',
       },
+      // Vercel Blob storage (production)
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+        pathname: '/**',
+      },
     ],
   },
   webpack: (webpackConfig) => {
