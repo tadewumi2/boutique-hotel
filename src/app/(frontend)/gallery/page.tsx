@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     'Browse rooms, dining, wellness, and the Golden Tee experience through our curated gallery.',
 }
 
+// Force dynamic rendering for CMS-driven content
+export const dynamic = 'force-dynamic'
+
 export default async function GalleryPage() {
   const images = await getGalleryImages()
 

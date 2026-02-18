@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     'Discover the full Golden Tee experience — from private dining and gallery walks to rooftop wellness and curated Parisian itineraries.',
 }
 
+// Force dynamic rendering for CMS-driven content
+export const dynamic = 'force-dynamic'
+
 export default async function ExperiencePage() {
   const experiences = await getExperiences()
 
