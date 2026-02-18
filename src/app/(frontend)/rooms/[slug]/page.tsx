@@ -9,6 +9,9 @@ import type { Metadata } from 'next'
 
 type Props = { params: Promise<{ slug: string }> }
 
+// Force dynamic rendering instead of static generation
+export const dynamic = 'force-dynamic'
+
 export async function generateStaticParams() {
   const slugs = await getAllRoomSlugs()
   return slugs.map((slug) => ({ slug }))
