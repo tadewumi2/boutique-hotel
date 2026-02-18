@@ -60,7 +60,12 @@ export default buildConfig({
 
   // ── Database — PostgreSQL ─────────────────────────────────────────────────
   db: postgresAdapter({
-    pool: { connectionString: process.env.DATABASE_URI as string },
+    pool: {
+      connectionString: process.env.DATABASE_URI as string,
+      // @ts-expect-error - family option not in type definitions but supported by pg
+      family: 4, // Force IPv4
+      connectionTimeoutMillis: 60000,
+    },
   }),
 
   // ── Vercel Blob storage for media uploads ─────────────────────────────────
