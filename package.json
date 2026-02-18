@@ -1,6 +1,7 @@
 {
   "name": "boutique-hotel",
   "version": "1.0.0",
+  "packageManager": "pnpm@10.29.3",
   "description": "A blank template to get started with Payload 3.0",
   "license": "MIT",
   "type": "module",
