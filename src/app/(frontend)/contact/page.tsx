@@ -20,12 +20,12 @@ export default function ContactPage() {
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
           <h1 className="font-serif text-5xl lg:text-6xl text-stone-900 leading-tight">
-            Let's Plan
+            Let&apos;s Plan
             <br />
             <em className="italic text-stone-500">Your Stay</em>
           </h1>
           <p className="text-stone-600 text-base leading-relaxed max-w-md">
-            Whether you have a question, a special request, or you're ready to book — our team is
+            Whether you have a question, a special request, or you&apos;re ready to book — our team is
             here. We prefer conversations to booking engines.
           </p>
         </div>

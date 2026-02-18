@@ -22,7 +22,7 @@ export default function NearbySection({ places }: { places: NearbyPlace[] }) {
               The Neighbourhood
             </p>
             <h2 className="font-serif text-4xl text-white leading-tight">
-              What's Around
+              What&apos;s Around
               <br />
               <em className="italic text-stone-400">the Corner</em>
             </h2>

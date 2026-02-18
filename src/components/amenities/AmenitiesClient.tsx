@@ -29,7 +29,7 @@ export default function AmenitiesClient({ groups }: Props) {
               <em className="italic text-stone-500">Nothing Extra.</em>
             </h1>
             <p className="text-stone-600 text-base leading-relaxed max-w-md">
-              We've considered every detail of your stay — from the coffee machine in your room to
+              We&apos;ve considered every detail of your stay — from the coffee machine in your room to
               the concierge who knows Paris better than a guidebook.
             </p>
           </div>

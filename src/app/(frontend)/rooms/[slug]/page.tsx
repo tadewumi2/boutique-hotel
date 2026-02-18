@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!room) return {}
 
   // Use SEO overrides if set, otherwise fall back to room data
-  const title = room.seo?.metaTitle || room.name
-  const description = room.seo?.metaDescription || room.shortDescription
+  const _title = room.seo?.metaTitle || room.name
+  const _description = room.seo?.metaDescription || room.shortDescription
 
   return {
     title: room.name,
@@ -61,7 +61,7 @@ export default async function RoomDetailPage({ params }: Props) {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2">
-            <RoomGallery images={room.gallery} name={room.name} />
+            <RoomGallery images={room.gallery} />
 
             <div className="mt-8 mb-6">
               <h1 className="font-serif text-4xl text-stone-900 mb-3">{room.name}</h1>

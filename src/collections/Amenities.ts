@@ -52,8 +52,8 @@ export const Amenities: CollectionConfig = {
         { label: 'Paid', value: 'paid' },
         { label: 'On Request', value: 'on-request' },
       ],
+      label: 'Status',
       admin: {
-        label: 'Status',
         description: 'Whether this amenity is included, paid, or on request.',
       },
     },

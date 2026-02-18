@@ -43,8 +43,8 @@ export default async function ExperiencePage() {
             <em className="italic text-stone-500">A Way of Being.</em>
           </h1>
           <p className="text-stone-600 text-base leading-relaxed max-w-md">
-            We believe a great hotel stay is not about the amenities list. It's about the moments —
-            planned and unplanned — that stay with you long after you've checked out.
+            We believe a great hotel stay is not about the amenities list. It&apos;s about the moments —
+            planned and unplanned — that stay with you long after you&apos;ve checked out.
           </p>
         </div>
       </div>

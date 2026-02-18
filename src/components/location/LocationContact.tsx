@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Copy } from 'lucide-react'
+import { MapPin, Phone, Mail } from 'lucide-react'
 import { hotelLocation } from '@/lib/location'
 
 export default function LocationContact() {

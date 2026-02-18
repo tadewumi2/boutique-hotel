@@ -1,6 +1,7 @@
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { fileURLToPath } from 'url'
 import path from 'path'
 import sharp from 'sharp'
@@ -22,7 +23,6 @@ export default buildConfig({
     user: 'users',
     meta: {
       titleSuffix: '— Golden Tee CMS',
-      favicon: '/favicon.ico',
     },
   },
 

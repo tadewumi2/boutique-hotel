@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!exp) return {}
 
   // Use SEO overrides if set, otherwise fall back to experience data
-  const title = exp.seo?.metaTitle || `${exp.title} — Golden Tee`
-  const description = exp.seo?.metaDescription || exp.description
+  const _title = exp.seo?.metaTitle || `${exp.title} — Golden Tee`
+  const _description = exp.seo?.metaDescription || exp.description
 
   return {
     title: `${exp.title} — Golden Tee`,
@@ -81,7 +81,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
             <p className="text-stone-600 leading-relaxed mb-8">{exp.description}</p>
 
             {/* Features */}
-            <h2 className="font-serif text-xl text-stone-900 mb-4">What's Included</h2>
+            <h2 className="font-serif text-xl text-stone-900 mb-4">What&apos;s Included</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-10">
               {exp.features.map((f) => (
                 <div key={f} className="flex items-center gap-2.5 text-sm text-stone-600">

@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 type ImageItem = { url: string; alt: string }
 
-export default function RoomGallery({ images, name }: { images: ImageItem[]; name: string }) {
+export default function RoomGallery({ images }: { images: ImageItem[] }) {
   const [active, setActive] = useState(0)
   const [lightbox, setLightbox] = useState(false)
 

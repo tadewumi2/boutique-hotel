@@ -15,7 +15,7 @@ export default function CtaBanner() {
           <em className="italic text-amber-700">Golden Tee</em> Awaits
         </h2>
         <p className="text-stone-600 text-base max-w-xl mx-auto leading-relaxed mb-10">
-          Reserve your room, enquire about a private experience, or simply say hello. We're here to
+          Reserve your room, enquire about a private experience, or simply say hello. We&apos;re here to
           make your visit unforgettable.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

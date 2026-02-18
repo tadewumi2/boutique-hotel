@@ -15,7 +15,7 @@ export default function ExperienceCta() {
           <em className="italic text-amber-700">made to order</em>
         </h2>
         <p className="text-stone-600 text-sm max-w-md mx-auto leading-relaxed mb-10">
-          Tell us what you're looking for and our team will craft something that fits perfectly
+          Tell us what you&apos;re looking for and our team will craft something that fits perfectly
           around your stay.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

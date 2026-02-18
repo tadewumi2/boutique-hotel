@@ -24,7 +24,7 @@ export default async function RoomsPage() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <h1 className="font-serif text-5xl text-stone-900 leading-tight">Rooms &amp; Suites</h1>
           <p className="text-stone-600 text-sm max-w-sm leading-relaxed">
-            Each room is individually designed. No two are exactly alike — and that's entirely the
+            Each room is individually designed. No two are exactly alike — and that&apos;s entirely the
             point.
           </p>
         </div>
@@ -38,9 +38,11 @@ export default async function RoomsPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {rooms.map((room: any) => {
               // Normalise Payload shape → RoomCard shape
               const normalised = {
+                id: String(room.id),
                 slug: room.slug,
                 name: room.name,
                 shortDescription: room.shortDescription,
@@ -50,8 +52,10 @@ export default async function RoomsPage() {
                 bedType: room.specs?.bedType ?? '',
                 view: room.specs?.view ?? '',
                 priceFrom: room.specs?.priceFrom ?? 0,
+                /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
                 features: (room.features ?? []).map((f: any) => f.feature),
-                amenities: [],
+                amenities: [] as string[],
+                gallery: [] as { url: string; alt: string }[],
                 images: [
                   typeof room.featuredImage === 'object' && room.featuredImage?.url
                     ? room.featuredImage.url
@@ -61,7 +65,7 @@ export default async function RoomsPage() {
                 order: room.order ?? 99,
                 seo: room.seo ?? undefined,
               }
-              return <RoomCard key={room.id} room={normalised} />
+              return <RoomCard key={normalised.id} room={normalised} />
             })}
           </div>
         )}

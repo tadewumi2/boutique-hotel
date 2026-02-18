@@ -128,12 +128,12 @@ export default function LocationPage() {
           The Location Works?
         </p>
         <h2 className="font-serif text-4xl md:text-5xl text-stone-900 leading-tight mb-5">
-          Then all that's left
+          Then all that&apos;s left
           <br />
           <em className="italic text-amber-700">is booking.</em>
         </h2>
         <p className="text-stone-600 text-sm max-w-md mx-auto leading-relaxed mb-10">
-          Reserve your room, arrange a transfer, or simply reach out with a question. We're here
+          Reserve your room, arrange a transfer, or simply reach out with a question. We&apos;re here
           before you even arrive.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

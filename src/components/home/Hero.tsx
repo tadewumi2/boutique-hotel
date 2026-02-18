@@ -30,7 +30,7 @@ export default function Hero() {
         </h1>
         <p className="text-base md:text-lg text-white/75 max-w-xl mx-auto mb-10 leading-relaxed">
           An intimate retreat in the heart of Paris. Thoughtfully designed rooms, curated
-          experiences, and a warmth you'll carry home.
+          experiences, and a warmth you&apos;ll carry home.
         </p>
 
         {/* CTAs — US-A1 + US-A6 */}

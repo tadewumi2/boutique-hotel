@@ -30,7 +30,7 @@ export default function NeighborhoodSection({ highlights }: { highlights: Highli
             <em className="italic text-stone-500">Paris at Its Most Itself</em>
           </h2>
           <p className="text-stone-600 leading-relaxed mb-4">
-            To stay in the 1st is to be at the very centre of Paris's long story. This is where the
+            To stay in the 1st is to be at the very centre of Paris&apos;s long story. This is where the
             city began — on the Île de la Cité, a short walk east — and where it has never stopped
             reinventing itself.
           </p>

@@ -21,7 +21,7 @@ export default function AmenitiesTeaser() {
           <h2 className="font-serif text-4xl md:text-5xl text-stone-900 leading-tight">
             Everything You Need,
             <br />
-            <em className="italic text-stone-600">Nothing You Don't</em>
+            <em className="italic text-stone-600">Nothing You Don&apos;t</em>
           </h2>
         </div>
         <Link
