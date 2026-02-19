@@ -25,8 +25,8 @@ export default function ContactPage() {
             <em className="italic text-stone-500">Your Stay</em>
           </h1>
           <p className="text-stone-600 text-base leading-relaxed max-w-md">
-            Whether you have a question, a special request, or you&apos;re ready to book — our team is
-            here. We prefer conversations to booking engines.
+            Whether you have a question, a special request, or you&apos;re ready to book — our team
+            is here. We prefer conversations to booking engines.
           </p>
         </div>
       </div>
@@ -40,7 +40,7 @@ export default function ContactPage() {
           <Link
             href="https://book.goldentee.com"
             target="_blank"
-            rel="noopener noreferrer
+            rel="noopener noreferrer"
             data-analytics="contact-book-now-banner"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-amber-700 font-semibold text-sm hover:bg-amber-50 transition-colors group whitespace-nowrap"
             aria-label="Book your room directly (opens in new tab)"
