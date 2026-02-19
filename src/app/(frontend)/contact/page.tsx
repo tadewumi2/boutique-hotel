@@ -38,9 +38,9 @@ export default function ContactPage() {
             Ready to book directly? Skip the form and reserve your room now.
           </p>
           <Link
-            href="https://book.maisonelara.com"
+            href="https://book.goldentee.com"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer
             data-analytics="contact-book-now-banner"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-amber-700 font-semibold text-sm hover:bg-amber-50 transition-colors group whitespace-nowrap"
             aria-label="Book your room directly (opens in new tab)"

@@ -14,8 +14,8 @@ export const hotelLocation = {
   contact: {
     phone: '+33 1 23 45 67 89',
     phoneHref: 'tel:+33123456789',
-    email: 'hello@maisonelara.com',
-    emailHref: 'mailto:hello@maisonelara.com',
+    email: 'hello@goldentee.com',
+    emailHref: 'mailto:hello@goldentee.com',
   },
   maps: {
     google: 'https://maps.google.com/?q=42+Rue+de+la+Paix+Paris+France',

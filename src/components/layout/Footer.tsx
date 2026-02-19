@@ -35,11 +35,11 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:hello@maisonelara.com"
+                  href="mailto:hello@goldentee.com"
                   className="flex items-center gap-3 text-stone-400 hover:text-white transition-colors"
                 >
                   <Mail size={15} className="shrink-0 text-amber-500" />
-                  hello@maisonelara.com
+                  hello@goldentee.com
                 </a>
               </li>
             </ul>

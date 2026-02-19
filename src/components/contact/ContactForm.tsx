@@ -111,8 +111,8 @@ export default function ContactForm() {
           <AlertCircle size={17} className="text-red-500 shrink-0 mt-0.5" />
           <p className="text-sm text-red-700">
             Something went wrong. Please try again or email us directly at{' '}
-            <a href="mailto:hello@maisonelara.com" className="underline">
-              hello@maisonelara.com
+            <a href="mailto:hello@goldentee.com" className="underline">
+              hello@goldentee.com
             </a>
             .
           </p>

@@ -26,8 +26,8 @@ export async function POST(req: NextRequest) {
     // e.g. using Resend, Nodemailer, or SendGrid:
     //
     // await resend.emails.send({
-    //   from: 'noreply@maisonelara.com',
-    //   to: 'hello@maisonelara.com',
+    //   from: 'noreply@goldentee.com',
+    //   to: 'hello@goldentee.com',
     //   subject: `New enquiry from ${name}`,
     //   text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\n\n${message}`,
     // })
