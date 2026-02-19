@@ -71,7 +71,7 @@ export default buildConfig({
   // ── Vercel Blob storage for media uploads ─────────────────────────────────
   plugins: [
     vercelBlobStorage({
-      enabled: true,
+      enabled: process.env.VERCEL_ENV === 'production', // Only enable in production
       collections: {
         media: true,
       },
