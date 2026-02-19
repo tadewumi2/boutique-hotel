@@ -10,27 +10,27 @@ export const metadata: Metadata = {
     template: '%s | Golden Tee',
   },
   description: 'An intimate boutique retreat in the heart of Paris.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL ?? 'https://golden-tee.vercel.app'),
   openGraph: {
-    title: 'Maison Elara — Boutique Hotel Paris',
+    title: 'Golden Tee — Boutique Hotel Paris',
     description: 'An intimate boutique retreat in the heart of Paris.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Maison Elara',
+    siteName: 'Golden Tee',
     images: [
       {
-        url: '/api/media/file/og-1.png',
+        url: '/images/og.png',
         width: 1536,
         height: 1024,
-        alt: 'Maison Elara — Boutique Hotel Paris',
+        alt: 'Golden Tee — Boutique Hotel Paris',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Maison Elara — Boutique Hotel Paris',
+    title: 'Golden Tee — Boutique Hotel Paris',
     description: 'An intimate boutique retreat in the heart of Paris.',
-    images: ['/api/media/file/og-1.png'],
+    images: ['/images/og.png'],
   },
 }
 
