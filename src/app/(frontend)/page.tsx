@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: 'Golden Tee — Boutique Hotel Paris',
     description: 'An intimate boutique retreat in the heart of Paris.',
-    images: ['/images/og.png'],
+    images: ['/api/media/file/og.png'],
   },
 }
 

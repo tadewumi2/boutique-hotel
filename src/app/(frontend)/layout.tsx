@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: 'Golden Tee',
     images: [
       {
-        url: '/images/og.png',
+        url: '/api/media/file/og.png',
         width: 1536,
         height: 1024,
         alt: 'Golden Tee — Boutique Hotel Paris',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Golden Tee — Boutique Hotel Paris',
     description: 'An intimate boutique retreat in the heart of Paris.',
-    images: ['/images/og.png'],
+    images: ['/api/media/file/og.png'],
   },
 }
 
